@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  skater_id: 1
+  park_id: 1
+  title: MyString
+  video: MyString
+  cation: MyText
+
+two:
+  skater_id: 1
+  park_id: 1
+  title: MyString
+  video: MyString
+  cation: MyText

@@ -1,0 +1,32 @@
+<div class="body">
+  <div class="container">
+    <%= render "admin/shared/error_messages", resource: resource %>
+    <div class="row">
+      <div class="form-header text-left">
+        <h3>管理者ログイン</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form col-sm-7">
+        <%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
+
+          <div class="form-group">
+          <%= f.label :email, class:"col-form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス", class:"form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, class:"col-form-label" %>
+            <%= f.password_field :password, autocomplete: "パスワード", class:"form-control" %>
+          </div>
+
+          <div class="actions text-right">
+            <%= f.submit "ログイン", class:"btn btn-primary" %>
+          </div>
+        <% end %><br />
+      </div>
+    </div>
+  </div>
+</div>
+
