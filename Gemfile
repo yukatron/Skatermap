@@ -69,4 +69,5 @@ gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'pry-byebug'
+gem 'jquery-turbolinks'
 

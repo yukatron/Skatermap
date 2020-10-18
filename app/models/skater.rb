@@ -10,8 +10,10 @@ class Skater < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :is_deleted, default: false
   validates :email, presence: true
+
+  attachment :profile_image
 
 end

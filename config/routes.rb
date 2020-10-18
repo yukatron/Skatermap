@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'home#top'
-
-  get 'home/top'
-  get 'home/about' => 'home#about', as: :about
+  	root 'home#top'
+  	get 'home/about' => 'home#about', as: :about
 
 	devise_for :skaters, controllers: {
 		registrations: 'skaters/registrations',
 		sessions: 'skaters/sessions'
 	}
+
+  	resources :skaters, only: [:show, :edit, :update]
 
 	devise_for :admins, skip: :all
 	devise_scope :admin do

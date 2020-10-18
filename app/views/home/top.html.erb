@@ -1,3 +1,43 @@
-<p class="notice"><%= notice %></p>
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="body">
+	<div class="container">
+		<p class="notice"><%= notice %></p>
+			<% if admin_signed_in? %>
+				<h2>トップページ</h2>
+				<div class="list">
+					<ul>
+					<% @skaters.each do |skater| %>
+					<li><%= skater.name %>
+					<%= skater.email %></li>
+					<% end %>
+					</ul>
+				</div>
+			<% else %>
+			<div class="image-slide">
+				<div class="image1"></div>
+				<div class="image2"></div>
+				<div class="image3"></div>
+				<div class="image4"></div>
+			</div>
+			<div class="row">
+				<h4>PARKS</h4> <span>more >></span>
+				<div class="park-list">
+					<ul>
+						<% @parks.each do |park| %>
+						<li class="park-list-item"><i class="far fa-hand-point-right"></i><%= park.name %> @<%= park.country.name %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<h4>VIDEOS</h4> <span>more >></span>
+				<div class="post-list">
+				<ul>
+					<% @posts.each do |post| %>
+					<li><%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true %><br /><%= post.skater.name %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+	</div>
+</div>
+
