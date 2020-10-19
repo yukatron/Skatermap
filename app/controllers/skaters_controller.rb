@@ -1,6 +1,11 @@
 class SkatersController < ApplicationController
   def show
-  	@skater = Skater.find(params[:id])
+  	if params[:post_id]
+  		@skater = Skater.find_by(id: params[:skater_id])
+  	else
+  		@skater = Skater.find(params[:id])
+  	end
+  	@posts = @skater.posts.page(params[:page]).reverse_order
   end
 
   def edit

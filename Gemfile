@@ -70,4 +70,6 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'jquery-turbolinks'
-
+gem 'kaminari','~> 1.2.1'
+gem 'geocoder'
+gem 'dotenv-rails'
