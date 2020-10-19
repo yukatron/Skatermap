@@ -1,0 +1,50 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="form-header">
+				<h4 class="form-header-title text-left">新しいパークの登録</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form">
+				<%= form_with model: @park, local: true do |f| %>
+				<%= render "layouts/error_messages", hoge: @park %>
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class:"form-control" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :zip %>
+					<%= f.text_field :zip, class:"form-control" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :address %>
+					<%= f.text_field :address, class:"form-control" %>
+				</div>
+				<div class="form-group">
+					<div class="radio">
+						<label><%= radio_button_tag("_country", "exist") %>国</label>
+						<%= collection_select(:park, :country_id, Country.all, :id, :name, include_blank: true) %>
+					</div>
+					<div class="radio">
+						<label><%= radio_button_tag("_country", "new") %>新しく国を登録</label>
+						<%= fields_for(@country) do |a| %>
+						<div class="form-group">
+							<%= a.label :name %>
+							<%= a.text_field :name %>
+						</div>
+						<% end %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :images %>
+					<%= f.file_field :images, multiple: true %>
+				</div>
+				<div class="actions">
+					<%= f.submit "パーク登録", class:"btn btn-info" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

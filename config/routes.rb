@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 	}
 
   	resources :skaters, only: [:show, :edit, :update]
+  	resources :posts do
+  		resource :favorites, only: [:create, :destroy]
+  	end
+  	resources :parks
 
 	devise_for :admins, skip: :all
 	devise_scope :admin do

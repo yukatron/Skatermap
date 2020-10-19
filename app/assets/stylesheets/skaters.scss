@@ -1,3 +1,56 @@
 // Place all the styles related to the skaters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.row:first-child {
+  margin-buttom: 10px auto;
+}
+.row {
+  margin: 2em;
+}
+.wrap {
+	width: 100%;
+}
+
+#tab-menu li {
+  float: left;
+  list-style-type: none;
+  width: 50%;
+}
+
+#tab-menu a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  border: none;
+}
+
+#tab-menu .active {
+  border-top: 2px solid #9d8e87;
+}
+
+#tab-contents .tab {
+  padding: 10px;
+  background: #fff;
+}
+
+#tab-contents p{
+  color:#000;
+  line-height: 2.5;
+}
+section .videos {
+	width: 80%;
+	margin: 0 auto;
+}
+.video {
+	float: left;
+	display: block;
+	border: none;
+}
+.video:nth-child(odd) {
+  margin: 0 10px 10px 0;
+}

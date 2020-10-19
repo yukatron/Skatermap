@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_094004) do
+ActiveRecord::Schema.define(version: 2020_10_19_112902) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,17 +72,18 @@ ActiveRecord::Schema.define(version: 2020_10_18_094004) do
     t.string "name", null: false
     t.string "zip", null: false
     t.string "address", null: false
-    t.string "image"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "skater_id", null: false
     t.integer "park_id"
     t.string "title", null: false
-    t.string "video", null: false
-    t.text "cation"
+    t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_094004) do
     t.datetime "updated_at", null: false
     t.boolean "is_deleted"
     t.string "name"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_skaters_on_email", unique: true
     t.index ["reset_password_token"], name: "index_skaters_on_reset_password_token", unique: true
   end
