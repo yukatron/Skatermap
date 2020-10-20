@@ -1,5 +1,4 @@
 class ParksController < ApplicationController
-	
 
 	def new
 		@park = Park.new
@@ -8,15 +7,16 @@ class ParksController < ApplicationController
 
 	def create
 		@park = Park.new(park_params)
-		if params[:_country] == "exist"
-			@park.country_id = params[:park][:country_id]
-		elsif params[:_country] == "new"
-			@country = Country.new
-			@country.name = params[:country][:name]
-			@country.save
 
-			@park.country_id = @country.id
-		end
+			if params[:_country] == "exist"
+				@country = Country.find(params[:Country][:id])
+			elsif params[:_country] == "new"
+				@country = Country.new(country_params)
+				@country.save
+			end
+
+		@park.country_id = @country.id
+
 		if @park.save
 			redirect_to park_path(@park.id)
 		else
@@ -48,6 +48,10 @@ class ParksController < ApplicationController
 	private
 
 	def park_params
-		params.require(:park).permit(:name, :address, :zip, images: [])
+		params.require(:park).permit(:name, :address, :zip, images: [], country:[:name])
+	end
+
+	def country_params
+		params.require(:country).permit(:name)
 	end
 end

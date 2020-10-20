@@ -19,23 +19,24 @@
 				<div class="image4"></div>
 			</div>
 			<div class="row">
-				<h4>PARKS</h4> <span>more >></span>
-				<div class="park-list">
-					<ul>
+				<div class="parks headline col-12">
+					<h4>PARKS   <%= link_to parks_path do %><small class="link">more >></small><% end %></h4>
+				</div>
+				<div class="parks col-10">
+					<ul class="list-unstyled">
 						<% @parks.each do |park| %>
-						<li class="park-list-item"><i class="far fa-hand-point-right"></i><%= park.name %> @<%= park.country.name %></li>
+							<p><li class="park-list-item"><i class="far fa-hand-point-right"></i>   <%= park.name %> @<%= park.address %> in <%= park.country.name %></li></p>
 						<% end %>
 					</ul>
 				</div>
 			</div>
 			<div class="row">
-				<h4>VIDEOS</h4> <span>more >></span>
-				<div class="post-list">
-				<ul>
-					<% @posts.each do |post| %>
-					<li><%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true %><br /><%= post.skater.name %></li>
-					<% end %>
-				</ul>
+				<div class="videos headline col-12">
+					<h4>VIDEOS   <%= link_to posts_path do %><small class="link">more >></small><% end %></h4>
+				</div>
+				<div class="videos col-10">
+					<%= render "posts/videos", posts: @posts %>
+				</div>
 			</div>
 			<% end %>
 	</div>
