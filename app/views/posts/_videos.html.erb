@@ -10,7 +10,7 @@
 			<% end %>
 		</div>
 		<div class="post col-9 p-0 clearfix">
-			<span class="float-left"><%= post.title %></span>
+			<span class="float-left"><%= post.title %><br><%= post.skater.name %></span>
 
 			<% if skater_signed_in? %>
 				<% if post.favorited_by?(current_skater) %>

@@ -35,15 +35,17 @@
 }
 .headline {
 	margin-bottom: 1em;
-	border-bottom: 2px solid #9d8e87;
+	border-bottom: 2px dashed #9d8e87;
 }
 .link {
-	color: #000;
-	text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
-a .link:hover {
-	text-decoration: none;
+.link:hover {
+  color:#000;
+  text-decoration:none;
 }
+
 .post {
   text-height: auto;
 }

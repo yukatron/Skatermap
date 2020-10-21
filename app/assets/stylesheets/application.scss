@@ -28,6 +28,17 @@
 .body {
 	margin: 3em;
 }
+.menu-item {
+  border-bottom: 1px dotted #9d8e87;
+  icon {
+  margin-left: 1em;
+  }
+}
+.nav-item {
+  i {
+    color: #9d8e87
+  }
+}
 .navbar-brand {
   font-family: "Monotype Corsiva";
   font-size: 2em;

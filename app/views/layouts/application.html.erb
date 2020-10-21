@@ -21,11 +21,12 @@
             <ul class="list-unstyled">
                 <!-- 管理人 -->
               <% if admin_signed_in? %>
-                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"navlink nav-link" %>
+                <li class="menu-item nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"navlink nav-link" %>
                 </li>
                   <!-- 会員 -->
               <% elsif skater_signed_in? %>
-                <li>
+                <li class="nav-item">
                   <p class="mt-5"><%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle ml-3", size: '50x50', fallback: "no_image.svg" %>
                   <%= current_skater.name %></p>
                 </li>
@@ -33,21 +34,27 @@
                   <%= link_to 'PROFILE', skater_path(current_skater.id), class:"navlink nav-link btn btn-outline-info btn-sm mb-1 ml-3 mr-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_skater_session_path, method: :delete, class:"nnavlink nav-link btn btn-outline-dark btn-sm mb-1 ml-3 mr-3" %>
+                  <%= link_to "ログアウト", destroy_skater_session_path, method: :delete, class:"navlink nav-link btn btn-outline-dark btn-sm mb-1 ml-3 mr-3 mb-4" %>
                 </li>
-                <li class="nav-item active"><%= link_to "About", about_path, class:"navlink nav-link" %> </li>
                 <!-- ゲスト -->
               <% else %>
-
-                <li class="nav-item"><%= link_to "About", about_path, class:"navlink nav-link" %></li>
-                <li class="nav-item"><%= link_to "新規登録", new_skater_registration_path, class:"navlink nav-link" %></li>
-                <li class="nav-item"><%= link_to "ログイン", new_skater_session_path, class:"navlink nav-link" %></li>
+                <li class="nav-item"><%= link_to "アカウント作成", new_skater_registration_path, class:"navlink nav-link" %></li>
+                <li class="menu-item nav-item"><%= link_to "ログイン", new_skater_session_path, class:"navlink nav-link" %></li>
               <% end %>
 
+              <li class="menu-item nav-item"><%= link_to about_path, class:"navlink nav-link" do %><%= image_tag 'about.jpg', class:"icon", size: '18x18' %> このサイトについて<% end %></li>
 
-              <li class="nav-item"><a href="#" class="navlink nav-link">MENU2</a></li>
-              <li class="nav-item"><a href="#" class="navlink nav-link">MENU3</a></li>
-              <li class="nav-item"><a href="#" class="navlink nav-link">MENU4</a></li><br/>
+              <li class="nav-item"><%= link_to posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> みんなの動画<% end %></li>
+
+              <li class="nav-item"><%= link_to parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> スケボパーク<% end %></li>
+
+              <li class="menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> 他のスケートボーダー<% end %></li>
+
+              <li class="nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
+
+              <li class="menu-item nav-item"><%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 新しいパークを登録する<% end %></li>
+
+              <br />
               <li class="nav-item">
                 <form class="form-inline justify-content-center">
                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
