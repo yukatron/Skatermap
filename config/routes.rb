@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 		sessions: 'skaters/sessions'
 	}
 
-  	resources :skaters, only: [:show, :edit, :update]
+  	resources :skaters
   	resources :posts do
   		resource :favorites, only: [:create, :destroy]
   	end

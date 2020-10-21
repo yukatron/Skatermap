@@ -1,21 +1,21 @@
-<div class="body">
-	<div class="container">
-		<div class="row">
-			<h4><%= @park.name %></h4>
+<div class="container clearfix" style="height: auto;">
+	<div class="row">
+		<div class="park-name col-12">
+			<h2><%= @park.name %>
+			  <small class="text-muted">in <%= @park.country.name %></small></h2>
 		</div>
-		<div class="row justify-content-center">
-			<div class="park clearfix">
-				<ul>
-					<%= @park.images.each do |image| %>
-					<li><%= image_tag(image, width:100) %></li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<p><%= @park.address %></p>
+	</div>
+	<div class="row justify-content-center">
+		<% if @park.images.attached? %>
+			<%= @park.images.each do |image| %>
+				<%= image_tag image.variant(resize: "200x200"), class:"image" %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class="map col-12">
+			<h5><%= @park.address %></h5>
 			<div id="map"></div>
-			<p><%= @park.country.name %></p>
 		</div>
 	</div>
 </div>

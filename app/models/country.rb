@@ -1,4 +1,5 @@
 class Country < ApplicationRecord
 	has_many :parks
-	belongs_to :skater
+	accepts_nested_attributes_for :parks
+
 end

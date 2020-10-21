@@ -7,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="form">
-				<%= form_with model: @park, local: true do |f| %>
+				<%= form_for(@park) do |f| %>
 				<%= render "layouts/error_messages", hoge: @park %>
 				<div class="form-group">
 					<%= f.label :name %>
@@ -23,18 +23,23 @@
 				</div>
 				<div class="form-group">
 					<div class="radio">
-						<label><%= radio_button_tag("_country", "exist") %>国</label>
-						<%= collection_select(:park, :country_id, Country.all, :id, :name, include_blank: true) %>
+						<label><%= radio_button_tag("_country", "exist") %>  国</label>
 					</div>
-					<div class="radio">
-						<label><%= radio_button_tag("_country", "new") %>新しく国を登録</label>
-						<%= fields_for(@country) do |a| %>
-						<div class="form-group">
-							<%= a.label :name %>
-							<%= a.text_field :name %>
+						<div class="m-3">
+							<%= collection_select(:Country, :id, Country.all, :id, :name, include_blank: true) %>
 						</div>
-						<% end %>
+
+					<div class="radio">
+						<label><%= radio_button_tag("_country", "new") %>  新しく国を登録</label>
 					</div>
+						<div id="form" class="form m-3">
+							<%= fields_for(@country) do |a| %>
+							<div class="form-group">
+								<%= a.label :name %>
+								<%= a.text_field :name, class:"form-control" %>
+							</div>
+							<% end %>
+						</div>
 				</div>
 				<div class="form-group">
 					<%= f.label :images %>

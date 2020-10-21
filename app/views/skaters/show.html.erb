@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="profile-image col-3">
-				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle", size: '100x100', fallback: "no_image.jpg" %>
+				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle", size: '100x100', fallback: "no_image.svg" %>
 			</div>
 			<div clas="profile col-4">
 				<%= @skater.name %>  <%= link_to "EDIT", edit_skater_path(@skater.id), class:"btn btn-success btn-sm" %><br />
