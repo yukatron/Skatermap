@@ -2,7 +2,7 @@
 	<div class="container">
 		<p class="notice"><%= notice %></p>
 			<% if admin_signed_in? %>
-				<h2>トップページ</h2>
+				<h2>会員</h2>
 				<div class="list">
 					<ul>
 					<% @skaters.each do |skater| %>
@@ -11,12 +11,20 @@
 					<% end %>
 					</ul>
 				</div>
-			<% else %>
-			<div class="image-slide">
-				<div class="image1"></div>
-				<div class="image2"></div>
-				<div class="image3"></div>
-				<div class="image4"></div>
+			<% end %>
+			<div class="slide">
+				<div class="image1">
+					<p>Photo by <a href="https://unsplash.com/@harrisonkugler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Harrison Kugler</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+				</div>
+				<div class="image2">
+					<p>Photo by <a href="https://unsplash.com/@jordanfmcqueen?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jordan McQueen</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+				</div>
+				<div class="image3">
+					<p>Photo by <a href="https://unsplash.com/@jack_henry?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jack Irwin</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+				</div>
+				<div class="image4">
+					<p>Photo by <a href="https://unsplash.com/@kukuhhimawans?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kukuh Himawan Samudro</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+				</div>
 			</div>
 			<div class="row">
 				<div class="parks headline col-12">
@@ -31,14 +39,13 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="videos headline col-12">
+				<div class="videos headline col-12 mb-0">
 					<h4>VIDEOS   <%= link_to posts_path do %><small class="link">more >></small><% end %></h4>
 				</div>
-				<div class="videos col-10">
+				<div class="videos col-12 p-0">
 					<%= render "posts/videos", posts: @posts %>
 				</div>
 			</div>
-			<% end %>
 	</div>
 </div>
 

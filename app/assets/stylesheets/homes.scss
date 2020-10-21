@@ -9,6 +9,19 @@
 .image1 {
   background-image: url(image1.jpg);
 }
+.image1 p, .image2 p, .image3 p, .image4 p {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1em 2em;
+  bottom: 1em;
+  right: 1em;
+  a {
+    color: #000;
+  }
+  a:hover {
+    color: #000;
+  }
+}
 .image2 {
   background-image: url(image2.jpg);
 }
@@ -30,4 +43,7 @@
 }
 a .link:hover {
 	text-decoration: none;
+}
+.post {
+  text-height: auto;
 }

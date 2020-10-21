@@ -1,8 +1,8 @@
 $("document").ready(function() {
-    $(".image-slide").skippr();
+    $(".slide").skippr();
 });
 
-$(".image-slide").skippr({
+$(".slide").skippr({
 	transition : 'slide',
 	speed : 1000,
 	easing : 'easeOutQuart',
