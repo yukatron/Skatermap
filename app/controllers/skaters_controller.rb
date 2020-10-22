@@ -4,6 +4,8 @@ class SkatersController < ApplicationController
   def show
   	if params[:post_id]
   		@skater = Skater.find_by(id: params[:skater_id])
+    elsif params[:comment_id]
+      @skater = Skater.find_by(id: params[:skater_id])
   	else
   		@skater = Skater.find(params[:id])
   	end
