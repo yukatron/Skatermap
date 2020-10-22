@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="park-name col-12">
 			<h2><%= @park.name %>
-			  <small class="text-muted">in <%= @park.country.name %></small></h2>
+			  <small class="text-muted">in <%= @park.country.name %></small><%= link_to '削除', park_path(@park), method: :delete, data: {confirm: "削除しますか？"}, class:"btn" %><%= link_to '編集', edit_park_path(@park), class:"btn" %></h2>
 		</div>
 	</div>
 	<div class="row justify-content-center">

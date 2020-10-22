@@ -34,9 +34,24 @@ class ParksController < ApplicationController
 	end
 
 	def edit
+		@park = Park.find(params[:id])
 	end
 
 	def update
+		@park = Park.find(params[:id])
+		if params[:park][:image_ids]
+			params[:park][:image_ids].each do |image_id|
+				image = @park.images.find(image_id)
+				image.purge
+			end
+		end
+
+		if @park.update(park_params)
+			flash[:notice]="パーク情報を更新しました"
+			redirect_to park_path(@park)
+		else
+			render :edit
+		end
 	end
 
 	def destroy

@@ -1,11 +1,11 @@
 <div class="body">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="profile-image col-3">
-				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle", size: '100x100', fallback: "no_image.svg" %>
+			<div class="profile-image col-2">
+				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle float-right", size: '100x100', fallback: "no_image.svg" %>
 			</div>
-			<div clas="profile col-4">
-				<%= @skater.name %>  <%= link_to "EDIT", edit_skater_path(@skater.id), class:"btn btn-success btn-sm" %><br />
+			<div class="profile col-4">
+				<h5 class="text-center pl-3"><%= @skater.name %> <%= link_to edit_skater_path(@skater.id)do %><i class="far fa-edit float-right"></i><% end %></h5><br />
 			</div>
 		</div>
 
@@ -18,7 +18,7 @@
 
 	      		<div id="tab-contents" class="clearfix">
 	        		<div id="profile" class="tab">
-	          			
+
 	        		</div>
 
 	        		<div id="my-videos" class="tab">

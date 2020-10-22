@@ -1,0 +1,7 @@
+<div class="list">
+	<% @skaters.each do |skater| %>
+	<h4><%= skater.name %></h4>
+		<%= attachment_image_tag skater, :profile_image %>
+			<p><%= skater.email %></p>
+	<% end %>
+</div>

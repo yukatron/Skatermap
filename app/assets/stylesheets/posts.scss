@@ -6,7 +6,13 @@
 	padding: 3em;
 }
 .post {
+	float: left;
+	padding-left: 3px;
 	span {
 		margin-top: 5px;
+		a {
+		 text-decoration: none;
+		 color: #000;
+		}
 	}
 }

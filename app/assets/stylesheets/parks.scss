@@ -14,4 +14,10 @@
 }
 .park-name {
 	border-bottom: 2px solid #9d8e87;
+	.btn {
+	float:right;
+	}
+	.btn:nth-child(2) {
+	color: red;
+	}
 }

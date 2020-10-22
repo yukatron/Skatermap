@@ -54,3 +54,11 @@ section .videos {
 .video:nth-child(odd) {
   margin: 0 10px 10px 0;
 }
+.profile {
+  h5 {
+    i {
+    color: #9d8e87;
+    margin-left: 1em;
+    }
+  }
+}
