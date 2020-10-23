@@ -2,13 +2,7 @@ class SkatersController < ApplicationController
   before_action :authenticate_skater!, except: [:index]
 
   def show
-  	if params[:post_id]
-  		@skater = Skater.find_by(id: params[:skater_id])
-    elsif params[:comment_id]
-      @skater = Skater.find_by(id: params[:skater_id])
-  	else
-  		@skater = Skater.find(params[:id])
-  	end
+    @skater = Skater.find(params[:id])
   	@posts = @skater.posts.page(params[:page]).reverse_order
   end
 

@@ -1,0 +1,33 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<h4>スケートボードパーク</h4>
+
+            <div class="search-form form-inline justify-content-end">
+            	<%= form_with url: search_parks_path, method: :get, local: true do |f| %>
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+		</div>
+		<div class="row justify-content-center">
+			<table class="table table-hover ol-10">
+				<tbody>
+					<% @parks.each do |park| %>
+		                <tr>
+			                <td><% if park.images.count > 0 %>
+									<%= image_tag park.images.first.variant(resize: "100x100").processed, class:"image" %>
+								<% end %>
+			                </td>
+			                <td><%= link_to park_path(park), class:"park-link" do %>
+			                	<%= park.name %>
+			                	<% end %>
+			                </td>
+			            </tr>
+		            <% end %>
+		        </tbody>
+		    </table>
+		    <%= paginate @parks %>
+		</div>
+    </div>
+</div>

@@ -55,10 +55,39 @@ section .videos {
   margin: 0 10px 10px 0;
 }
 .profile {
-  h5 {
-    i {
+  i {
     color: #9d8e87;
     margin-left: 1em;
+  }
+  .follow-button {
+    font-size: 70%;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.25em;
+    text-decoration: none;
+    border:none;
+    background: #9d8e87;
+    color: white;
+    transition: .4s;
+    i {
+      color: white;
+      margin: 0;
     }
   }
+  .follow-button:hover {
+    color: #9d8e87;
+    background-color:#ECECEC;
+    i {
+      color: #9d8e87;
+      margin: 0;
+    }
+  }
+}
+.skater-link {
+  color: #000;
+  text-decoration: none;
+}
+.skater-link:hover {
+  color: #9d8e87;
+  text-decoration: none;
 }

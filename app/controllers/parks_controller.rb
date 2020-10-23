@@ -29,6 +29,14 @@ class ParksController < ApplicationController
 		@parks = Park.all.page(params[:page]).reverse_order
 	end
 
+	def search
+		if params[:name].present?
+			@parks = Park.where('name LIKE ?', "%#{params[:name]}%")
+		else
+			@parks = Park.none
+		end
+	end
+
 	def show
 		@park = Park.find(params[:id])
 	end

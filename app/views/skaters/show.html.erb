@@ -4,8 +4,31 @@
 			<div class="profile-image col-2">
 				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle float-right", size: '100x100', fallback: "no_image.svg" %>
 			</div>
-			<div class="profile col-4">
-				<h5 class="text-center pl-3"><%= @skater.name %> <%= link_to edit_skater_path(@skater.id)do %><i class="far fa-edit float-right"></i><% end %></h5><br />
+			<div class="profile col-5">
+				<div class="profile-title clearfix">
+					<h5 class="float-left pl-3 inline-text"><%= @skater.name %></h5>
+					<% if current_skater == @skater %>
+						<%= link_to edit_skater_path(@skater.id)do %><i class="far fa-edit float-right"></i><% end %>
+					<% else %>
+	  					<% if current_skater.following?(@skater) %>
+		  					<%= form_for(@skater, url: unfollow_path(@skater), method: :delete) do |f| %>
+		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Unfollow<% end %>
+							<% end %>
+		  				<% else %>
+		    				<%= form_for(@skater, url: follow_path(@skater), method: :post) do |f| %>
+		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Follow<% end %>
+		   					<% end %>
+	  					<% end %>
+	  				<% end %>
+	  			</div>
+	  			<div class="profile-content">
+					<p class="text-right">
+						<%= @skater.followings.count %> following<br/>
+						<%= @skater.followers.count %> follower
+					</p>
+				</div>
 			</div>
 		</div>
 
