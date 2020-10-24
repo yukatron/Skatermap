@@ -1,21 +1,21 @@
 class SkatersController < ApplicationController
   before_action :authenticate_skater!, except: [:index]
+  before_action :set_skater, only: [:show, :edit, :update]
 
   def show
-    @skater = Skater.find(params[:id])
   	@posts = @skater.posts.page(params[:page]).reverse_order
   end
 
   def index
     @skaters = Skater.all
+    @search_params = skater_search_params
+    @skaters = Skater.search(@search_params).page(params[:page]).reverse_order
   end
 
   def edit
-  	@skater = Skater.find(params[:id])
   end
 
   def update
-    @skater = Skater.find(params[:id])
     if params[:remove_profile_image]
       image = @skater.profile_image
       image.destroy
@@ -31,6 +31,14 @@ class SkatersController < ApplicationController
 
   private
   def skater_params
-    params.require(:skater).permit(:name, :profile_image, :remove_profile_image)
+    params.require(:skater).permit(:name, :biography, :profile_image, :remove_profile_image)
+  end
+
+  def skater_search_params
+    params.fetch(:search, {}).permit(:name)
+  end
+
+  def set_skater
+    @skater = Skater.find(params[:id])
   end
 end

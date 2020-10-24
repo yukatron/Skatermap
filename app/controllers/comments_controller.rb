@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_skater!
 
 	def create
 		post = Post.find(params[:post_id])
@@ -9,6 +10,8 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+		redirect_to post_path(params[:post_id])
 	end
 
 	private

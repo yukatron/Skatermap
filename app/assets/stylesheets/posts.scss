@@ -5,9 +5,6 @@
 	border-top: 1px solid #9d8e87;
 	padding: 3em;
 }
-div .profile-image {
-	padding: 0;
-}
 .post {
 	float: left;
 	padding-left: 3px;
@@ -21,19 +18,22 @@ div .profile-image {
 	.btn {
 		padding: 0;
 	}
+	p .park-link {
+		text-decoration: none;
+		color: #000;
+	}
+	p .park-link:hover {
+		text-decoration: none;
+		color: #9d8e87;
+	}
 }
-div .post-comments {
-	padding: 0;
+.comments {
 	h5 {
 		border-bottom: 1px solid #9d8e87;
 	}
-}
-.comment-text {
-	padding: 0;
-	p {
-		margin: 0;
+	.comments-content {
+		.row:hover {
+			background: #f0fff0;
+		}
 	}
-}
-.comment-body {
-	padding: 0;
 }

@@ -1,7 +1,20 @@
 <div class="body">
 	<div class="container">
-		<div class="row">
-			<h4>Skaters</h4>
+		<div class="row clearfix">
+			<% if @search_params.blank? %>
+				<h4 class="test-inline col-5 float-left">スケートボーダー</h4>
+			<% else %>
+				<h4 class="test-inline col-5 float-left">"<%= @search_params[:name] %>"の検索結果  (<%= @skaters.count %>件)</h4>
+			<% end %>
+
+            <div class="search-form form-inline col-7 justify-content-end clearfix">
+            	<%= form_with(scope: :search, url: skaters_path, method: :get, local: true) do |f| %>
+            		<div class="form-group">
+            		<%= f.text_field :name, value: @search_params[:name], class:"search form-control mr-sm-2", placeholder:"Search by name" %>
+            		<%= f.button :type => "submit(t('helpers.submit.search'))", class:"btn my-2 my-sm-0" do %><i class="fas fa-search"></i><% end %>
+            		</div>
+            	<% end %>
+            </div>
 		</div>
 		<%= render "skaters/skaters_index", skaters: @skaters %>
     </div>

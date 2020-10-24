@@ -1,0 +1,82 @@
+// Place all the styles related to the countries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.table-head {
+	background-color: #99CCCC;
+}
+.country-name {
+	border-bottom: 2px solid #9d8e87;
+	.btn {
+	float:right;
+	}
+	.btn-delete {
+	color: red;
+	}
+	.btn:hover {
+	color: #fff;
+	background-color: #9d8e87;
+	}
+}
+.country-link {
+  color: #000;
+  text-decoration: none;
+}
+.country-link:hover {
+  color: #9d8e87;
+  text-decoration: none;
+}
+.country-content {
+	position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 2px #99CCCC;
+    .box-title {
+    	position: absolute;
+    	display: inline-block;
+    	top: -27px;
+    	left: -3px;
+    	padding: 0 9px;
+    	height: 25px;
+    	line-height: 25px;
+    	font-size: 16px;
+    	background: #99CCCC;
+    	color: #ffffff;
+    	font-weight: bold;
+    	border-radius: 5px 5px 0 0;
+    }
+    p {
+    	margin: 0;
+    	padding: 0;
+    }
+}
+div .search-form {
+	.form-group {
+		border-bottom: 1px solid #9d8e87;
+		.search {
+			border: none;
+			float: right;
+		}
+		.btn {
+			color: #000;
+  			text-decoration: none;
+  			float: right;
+		}
+		.btn:hover {
+			color: #9d8e87;
+  			text-decoration: none;
+		}
+	}
+}
+.add-country {
+	border: none;
+	float: right;
+	.btn {
+		color: #000;
+  		text-decoration: none;
+  		float: right;
+	}
+	.btn:hover {
+		color: #9d8e87;
+  		text-decoration: none;
+	}
+}

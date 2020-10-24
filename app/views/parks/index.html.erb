@@ -1,17 +1,23 @@
 <div class="body">
 	<div class="container">
-		<div class="row">
-			<h4>スケートボードパーク</h4>
+		<div class="row clearfix">
+			<% if @search_params.blank? %>
+				<h4 class="test-inline col-5 float-left">スケートパーク</h4>
+			<% else %>
+				<h4 class="test-inline col-5 float-left">"<%= @search_params[:name] %>"の検索結果  (<%= @parks.count %>件)</h4>
+			<% end %>
 
-            <div class="search-form form-inline justify-content-end">
-            	<%= form_with url: search_parks_path, method: :get, local: true do |f| %>
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-
+            <div class="search-form form-inline col-7 justify-content-end clearfix">
+            	<%= form_with(scope: :search, url: parks_path, method: :get, local: true) do |f| %>
+            		<div class="form-group">
+            		<%= f.text_field :name, value: @search_params[:name], class:"search form-control mr-sm-2", placeholder:"Search by name" %>
+            		<%= f.button :type => "submit(t('helpers.submit.search'))", class:"btn my-2 my-sm-0" do %><i class="fas fa-search"></i><% end %>
+            		</div>
+            	<% end %>
+            </div>
 		</div>
 		<div class="row justify-content-center">
-			<table class="table table-hover ol-10">
+			<table class="table table-hover col-10">
 				<tbody>
 					<% @parks.each do |park| %>
 		                <tr>

@@ -4,7 +4,7 @@
 	    <%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
 	</div>
 	<div class="row m-0">
-		<div class="profile-image col-2">
+		<div class="profile-image col-2 p-0">
 			<%= link_to skater_path(post.skater.id) do %>
 		    <%= attachment_image_tag post.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
 			<% end %>

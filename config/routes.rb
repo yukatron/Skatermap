@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   		resources :comments, only: [:create, :destroy]
   		resource :favorites, only: [:create, :destroy]
   	end
-  	resources :parks do
-  		get :search, on: :collection
-  	end
+  	resources :parks
+    resources :countries
+
 
   	post 'follow/:id' => 'relationships#create', as: :follow
   	delete 'unfollow/:id' => 'relationships#destroy', as: :unfollow

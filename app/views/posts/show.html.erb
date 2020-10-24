@@ -34,16 +34,18 @@
 							<span class="text-body float-right mr-3"><%= link_to 'Edit', edit_post_path(@post), class:"btn btn-white btn-sm" %></span>
 						<% end %>
 					</div>
+					<% if @post.park_id.present? %>
+						<p class="col-12 text-right">@ <%= link_to park_path(@post.park), class:"park-link" do %><%= @post.park.name %><% end %></p>
+					<% end %>
 				</div>
-				<div class="row ml-2">
-					<p class="lead"><%= @post.caption %></p>
+				<div class="row ml-2 clearfix">
+					<p class="lead col-12 float-left"><%= @post.caption %></p>
 				</div>
 			</div>
-			<div class="post-comments col-md-3 col-12">
+			<div class="comments col-md-3 col-12">
 				<h5>コメント</h5>
 				<div class="form-horizontal clearfix">
-					<%= form_for(@comment, url: post_comments_path(@post), method: :post) do |f| %>
-						<%= f.hidden_field :skater_id, value: current_skater.id %>
+					<%= form_for [@post, @comment] do |f| %>
 		  				<div class="form-group">
 		      				<%= f.text_area :comment, rows:'3', class:"form-control pb-0", placeholder:"コメント入力" %>
 		  				</div>
@@ -53,25 +55,33 @@
 					<% end %>
 				</div>
 
-				<div class="comment-body col-12 p-0">
-					<% if @comments.present? %>
-						<% @comments.each do |comment| %>
-						<div class="row m-0">
-							<div class="profile-image col-2 mt-1">
-								<%= link_to skater_path(comment.skater.id) do %>
-		    						<%= attachment_image_tag comment.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
-								<% end %>
-							</div>
-							<div class="post col-10 p-0 clearfix">
-								<span class="text-body float-left"><%= comment.comment %></span>
-								<span class="text-body float-right">by <%= comment.skater.name %></span>
-							</div>
+				<div class="comments-content mt-1">
+					<% @post.comments.each do |comment| %>
+					<div class="row m-0 mt-2">
+						<div class="profile-image col-2 pl-0">
+							<%= link_to skater_path(comment.skater.id) do %>
+			    				<%= attachment_image_tag comment.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
+			    			<% end %>
+			    		</div>
+
+			    		<div class="post col-10 pr-0 clearfix">
+			    			<span class="text-body float-right">by <%= comment.skater.name %></span>
+			    		</div>
+
+						<div class="post col-12 pr-0 clearfix">
+							<span class="text-body"><%= comment.comment %></span>
+
+							<% if comment.skater == current_skater %>
+								<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
+							<% end %>
 						</div>
-						<% end %>
-					<% else %>
-						<p>コメントはありません</p>
+					</div>
 					<% end %>
 				</div>
+
+				<% if @post.comments.blank? %>
+					<p>コメントはありません</p>
+				<% end %>
 			</div>
 		</div>
 

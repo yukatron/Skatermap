@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="park-name col-12">
 			<h2><%= @park.name %>
-			  <small class="text-muted">in <%= @park.country.name %></small><%= link_to '削除', park_path(@park), method: :delete, data: {confirm: "削除しますか？"}, class:"btn" %><%= link_to '編集', edit_park_path(@park), class:"btn" %></h2>
+			  <small class="text-muted">in <%= @park.country.name %></small><%= link_to 'Delete', park_path(@park), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-delete" %><%= link_to 'Edit', edit_park_path(@park), class:"btn" %></h2>
 		</div>
 	</div>
 	<div class="row justify-content-center">
@@ -12,11 +12,37 @@
 			<% end %>
 		<% end %>
 	</div>
-	<div class="row">
-		<div class="map col-12">
-			<h5><%= @park.address %></h5>
-			<div id="map"></div>
+	<div class="row justify-content-center clearfix">
+		<div class="table-header col-10"><h5>基本情報</h5></div>
+		<table class="table table-hover col-10">
+			<tbody>
+				<tr>
+					<th class="active">住所</th>
+					<td><%= @park.zip %><br>
+						<%= @park.address %>
+					</td>
+				</tr>
+				<tr>
+					<th class="active">電話番号</th>
+					<td><%= @park.tel %></td>
+				</tr>
+				<tr>
+					<th class="active">使用可能時間</th>
+					<td><%= @park.open_time %></td>
+				</tr>
+				<tr>
+					<th class="active">料金</th>
+					<td><%= @park.price %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="col-10">
+			<div class="park-content">
+				<span class="box-title">About this park</span>
+				<p><%= @park.description %></p>
+			</div>
 		</div>
+		<%= render "posts/videos", posts: @posts %>
 	</div>
 </div>
 

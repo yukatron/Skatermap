@@ -36,16 +36,28 @@
 			<div class="wrap">
 	      		<ul id="tab-menu" class="clearfix">
 	        		<li><a href="#profile" class="active">PROFILE</a></li>
-	        		<li><a href="#my-videos" class="">MY VIDEOS</a></li>
+	        		<li><a href="#my-videos" class="">VIDEOS</a></li>
 	      		</ul>
 
 	      		<div id="tab-contents" class="clearfix">
 	        		<div id="profile" class="tab">
-
+	        			<div class="row justify-content-center">
+	        				<h4 class="col-10">BIOGRAPHY</h4>
+	        			</div>
+	        			<div class="row justify-content-center">
+		        			<div class="content col-9">
+								<p><%= @skater.biography %></p>
+								<% if @skater.biography.blank? %>
+								<p class="text-center">何も書かれていません</p>
+								<% end %>
+							</div>
+						</div>
 	        		</div>
 
 	        		<div id="my-videos" class="tab">
-	        			<%= render "posts/videos", posts: @posts %>
+	        			<div class="row">
+	        				<%= render "posts/videos", posts: @posts %>
+	        			</div>
 	        		</div>
 	        	</div>
 	        </div>

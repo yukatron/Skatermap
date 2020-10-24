@@ -5,50 +5,9 @@
 				<h4 class="form-header-title text-left">新しいパークの登録</h4>
 			</div>
 		</div>
-		<div class="row">
-			<div class="form">
-				<%= form_for(@park) do |f| %>
-				<%= render "layouts/error_messages", hoge: @park %>
-				<div class="form-group">
-					<%= f.label :name %>
-					<%= f.text_field :name, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :zip %>
-					<%= f.text_field :zip, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :address %>
-					<%= f.text_field :address, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<div class="radio">
-						<label><%= radio_button_tag("_country", "exist") %>  国</label>
-					</div>
-						<div class="m-3">
-							<%= collection_select(:Country, :id, Country.all, :id, :name, include_blank: true) %>
-						</div>
-
-					<div class="radio">
-						<label><%= radio_button_tag("_country", "new") %>  新しく国を登録</label>
-					</div>
-						<div id="form" class="form m-3">
-							<%= fields_for(@country) do |a| %>
-							<div class="form-group">
-								<%= a.label :name %>
-								<%= a.text_field :name, class:"form-control" %>
-							</div>
-							<% end %>
-						</div>
-				</div>
-				<div class="form-group">
-					<%= f.label :images %>
-					<%= f.file_field :images, multiple: true %>
-				</div>
-				<div class="actions">
-					<%= f.submit "パーク登録", class:"btn btn-info" %>
-				</div>
-				<% end %>
+		<div class="row justify-content-center">
+			<div class="form col-10">
+				<%= render "form", park: @park, country: @country %>
 			</div>
 		</div>
 	</div>

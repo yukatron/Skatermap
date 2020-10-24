@@ -2,65 +2,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="form-header">
-				<h4 class="form-header-title text-left">新しいパークの登録</h4>
+				<h4 class="form-header-title text-left">スケートパークの編集</h4>
 			</div>
 		</div>
-		<div class="row">
-			<div class="form">
-				<%= form_with(model: @park, local: true) do |f| %>
-				<%= render "layouts/error_messages", hoge: @park %>
-				<div class="form-group">
-					<%= f.label :name, 'パーク名' %>
-					<%= f.text_field :name, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :zip, '郵便番号' %>
-					<%= f.text_field :zip, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :address, '住所' %>
-					<%= f.text_field :address, class:"form-control" %>
-				</div>
-				<div class="form-group">
-					<div class="radio">
-						<label><%= radio_button_tag("_country", "exist") %>  国</label>
-					</div>
-						<div class="m-3">
-							<%= collection_select(:Country, :id, Country.all, :id, :name, include_blank: true) %>
-						</div>
-
-					<div class="radio">
-						<label><%= radio_button_tag("_country", "new") %>  新しく国を登録</label>
-					</div>
-
-					<div id="form" class="form m-3">
-						<%= fields_for(@country) do |a| %>
-							<div class="form-group">
-								<%= a.label :name %>
-								<%= a.text_field :name, class:"form-control" %>
-							</div>
-						<% end %>
-					</div>
-				</div>
-				<div class="form-group">
-					<%= f.label :images, '画像' %>
-					<%= f.file_field :images, multiple: true %>
-				</div>
-
-				<div class="form-group">
-					<% if @park.images.present? %>
-						<p> 削除する写真にチェックしてください</p>
-						<% @park.images.each do |image| %>
-
-							<%= f.check_box :image_ids, {:multiple => true}, image.id, false %>
-							<%= image_tag image.variant(resize: "100x100"), class:"image" %>
-						<% end %>
-					<% end %>
-				</div>
-				<div class="actions">
-					<%= f.submit "パーク情報更新", class:"btn btn-info" %>
-				</div>
-				<% end %>
+		<div class="row justify-content-center">
+			<div class="form col-10">
+				<%= render "form", park: @park, country: @country %>
 			</div>
 		</div>
 	</div>
