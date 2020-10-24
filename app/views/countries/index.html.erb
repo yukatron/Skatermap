@@ -1,0 +1,55 @@
+<div class="body">
+	<div class="container">
+		<div class="row clearfix">
+			<% if @search_params.blank? %>
+				<h4 class="test-inline col-5 float-left">Countries</h4>
+			<% else %>
+				<h4 class="test-inline col-5 float-left">"<%= @search_params[:name] %>"の検索結果  (<%= @countries.count %>件)</h4>
+			<% end %>
+
+            <div class="search-form form-inline col-7 justify-content-end clearfix">
+            	<%= form_with(scope: :search, url: countries_path, method: :get, local: true) do |f| %>
+            		<div class="form-group">
+            		<%= f.text_field :name, value: @search_params[:name], class:"search form-control mr-sm-2 p-0", placeholder:"Search by name" %>
+            		<%= f.button :type => "submit(t('helpers.submit.search'))", class:"btn my-2 my-sm-0" do %><i class="fas fa-search"></i><% end %>
+            		</div>
+            	<% end %>
+            </div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="add-country col-10 clearfix">
+				<%= link_to new_country_path, class:"btn" do %>...add <i class="fas fa-globe-europe"></i><% end %>
+			</div>
+			<table class="table table-hover col-10">
+				<thead>
+					<tr class="table-head">
+						<th>国名</th>
+						<th>この国にあるパーク例</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @countries.each do |country| %>
+		                <tr>
+			                <td><%= link_to country_path(country), class:"country-link" do %>
+			                		<%= country.name %>
+			                	<% end %>
+			                </td>
+			                <td><% if country.parks.count > 0 %>
+									<%= link_to park_path(country.parks.first), class:"country-link" do %>
+										<%= country.parks.first.name %>
+									<% end %>
+									<% if country.parks.second.present? %>
+										 | <%= link_to park_path(country.parks.second), class:"country-link" do %>
+										 	<%= country.parks.second.name %>
+										<% end %>
+									<% end %>
+								<% end %>
+			                </td>
+			            </tr>
+		            <% end %>
+		        </tbody>
+		    </table>
+		    <%= paginate @countries %>
+		</div>
+    </div>
+</div>

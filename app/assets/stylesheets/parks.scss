@@ -5,13 +5,67 @@
 	float: left;
 	margin: 1em;
 }
-#map {
-	height: 150px;
-	width: 270px;
-}
 .image {
 	margin: 1em;
 }
 .park-name {
 	border-bottom: 2px solid #9d8e87;
+	.btn {
+	float:right;
+	}
+	.btn-delete {
+	color: red;
+	}
+	.btn:hover {
+	color: #fff;
+	background-color: #9d8e87;
+	}
+}
+.park-link {
+  color: #000;
+  text-decoration: none;
+}
+.park-link:hover {
+  color: #9d8e87;
+  text-decoration: none;
+}
+div .search-form {
+	.form-group {
+		border-bottom: 1px solid #9d8e87;
+		.search {
+			border: none;
+			float: right;
+		}
+		.btn {
+			color: #000;
+  			text-decoration: none;
+  			float: right;
+		}
+		.btn:hover {
+			color: #9d8e87;
+  			text-decoration: none;
+		}
+	}
+}
+.park-content {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 2px #99CCCC;
+    border-radius: 8px;
+    .box-title {
+    	position: absolute;
+    	display: inline-block;
+    	top: -13px;
+    	left: 10px;
+    	padding: 0 9px;
+    	line-height: 1;
+    	font-size: 19px;
+    	background: #FFF;
+    	color: #95ccff;
+    }
+    p {
+    	margin: 0;
+    	padding: 1em 1.5em;
+    }
 }

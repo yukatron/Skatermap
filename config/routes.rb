@@ -8,11 +8,19 @@ Rails.application.routes.draw do
 		sessions: 'skaters/sessions'
 	}
 
-  	resources :skaters
+  	resources :skaters do
+  		get 'followings' => 'relationships#index',as: :followings
+  	end
   	resources :posts do
+  		resources :comments, only: [:create, :destroy]
   		resource :favorites, only: [:create, :destroy]
   	end
   	resources :parks
+    resources :countries
+
+
+  	post 'follow/:id' => 'relationships#create', as: :follow
+  	delete 'unfollow/:id' => 'relationships#destroy', as: :unfollow
 
 	devise_for :admins, skip: :all
 	devise_scope :admin do

@@ -1,11 +1,34 @@
 <div class="body">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="profile-image col-3">
-				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle", size: '100x100', fallback: "no_image.svg" %>
+			<div class="profile-image col-2">
+				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle float-right", size: '100x100', fallback: "no_image.svg" %>
 			</div>
-			<div clas="profile col-4">
-				<%= @skater.name %>  <%= link_to "EDIT", edit_skater_path(@skater.id), class:"btn btn-success btn-sm" %><br />
+			<div class="profile col-5">
+				<div class="profile-title clearfix">
+					<h5 class="float-left pl-3 inline-text"><%= @skater.name %></h5>
+					<% if current_skater == @skater %>
+						<%= link_to edit_skater_path(@skater.id)do %><i class="far fa-edit float-right"></i><% end %>
+					<% else %>
+	  					<% if current_skater.following?(@skater) %>
+		  					<%= form_for(@skater, url: unfollow_path(@skater), method: :delete) do |f| %>
+		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Unfollow<% end %>
+							<% end %>
+		  				<% else %>
+		    				<%= form_for(@skater, url: follow_path(@skater), method: :post) do |f| %>
+		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Follow<% end %>
+		   					<% end %>
+	  					<% end %>
+	  				<% end %>
+	  			</div>
+	  			<div class="profile-content">
+					<p class="text-right">
+						<%= @skater.followings.count %> following<br/>
+						<%= @skater.followers.count %> follower
+					</p>
+				</div>
 			</div>
 		</div>
 
@@ -13,16 +36,28 @@
 			<div class="wrap">
 	      		<ul id="tab-menu" class="clearfix">
 	        		<li><a href="#profile" class="active">PROFILE</a></li>
-	        		<li><a href="#my-videos" class="">MY VIDEOS</a></li>
+	        		<li><a href="#my-videos" class="">VIDEOS</a></li>
 	      		</ul>
 
 	      		<div id="tab-contents" class="clearfix">
 	        		<div id="profile" class="tab">
-	          			
+	        			<div class="row justify-content-center">
+	        				<h4 class="col-10">BIOGRAPHY</h4>
+	        			</div>
+	        			<div class="row justify-content-center">
+		        			<div class="content col-9">
+								<p><%= @skater.biography %></p>
+								<% if @skater.biography.blank? %>
+								<p class="text-center">何も書かれていません</p>
+								<% end %>
+							</div>
+						</div>
 	        		</div>
 
 	        		<div id="my-videos" class="tab">
-	        			<%= render "posts/videos", posts: @posts %>
+	        			<div class="row">
+	        				<%= render "posts/videos", posts: @posts %>
+	        			</div>
 	        		</div>
 	        	</div>
 	        </div>

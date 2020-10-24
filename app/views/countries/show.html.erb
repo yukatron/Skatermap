@@ -1,0 +1,41 @@
+<div class="container clearfix" style="height: auto;">
+	<div class="row">
+		<div class="country-name col-12">
+			<h3><%= @country.name %>
+			  <%= link_to 'Delete', country_path(@country), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-delete" %><%= link_to 'Edit', edit_country_path(@country), class:"btn" %></h3>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="country-content col-10">
+			<span class="box-title">注意点など</span>
+			<p><%= @country.description %></p>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-12">
+			<h4>Skateparks in <%= @country.name %></h4>
+		</div>
+		<% if @parks.present? %>
+			<table class="table table-hover col-10">
+				<tbody>
+					<% @parks.each do |park| %>
+		                <tr>
+			                <td><% if park.images.count > 0 %>
+									<%= image_tag park.images.first.variant(resize: "100x100").processed, class:"image" %>
+								<% end %>
+			                </td>
+			                <td><%= link_to park_path(park), class:"park-link" do %>
+			                	<%= park.name %>
+			                	<% end %>
+			                </td>
+			            </tr>
+		            <% end %>
+		        </tbody>
+		    </table>
+		    <%= paginate @parks %>
+		    <% else %>
+		    <p>登録されているパークはありません</p>
+		    <% end %>
+		</div>
+	</div>
+</div>

@@ -22,19 +22,19 @@
                 <!-- 管理人 -->
               <% if admin_signed_in? %>
                 <li class="menu-item nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"navlink nav-link" %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"navlink nav-link btn btn-outline-secondary btn-sm mb-1 ml-3 mr-3 mb-4" %>
                 </li>
                   <!-- 会員 -->
               <% elsif skater_signed_in? %>
                 <li class="nav-item">
-                  <p class="mt-5"><%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle ml-3", size: '50x50', fallback: "no_image.svg" %>
+                  <p class="mt-5"><%= attachment_image_tag current_skater, :profile_image, class:"profile-image rounded-circle ml-3", size: '50x50', fallback: "no_image.svg" %>
                   <%= current_skater.name %></p>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'PROFILE', skater_path(current_skater.id), class:"navlink nav-link btn btn-outline-info btn-sm mb-1 ml-3 mr-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_skater_session_path, method: :delete, class:"navlink nav-link btn btn-outline-dark btn-sm mb-1 ml-3 mr-3 mb-4" %>
+                  <%= link_to "ログアウト", destroy_skater_session_path, method: :delete, class:"navlink nav-link btn btn-outline-secondary btn-sm mb-1 ml-3 mr-3 mb-4" %>
                 </li>
                 <!-- ゲスト -->
               <% else %>
@@ -48,19 +48,25 @@
 
               <li class="nav-item"><%= link_to parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> スケボパーク<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> 他のスケートボーダー<% end %></li>
+              <li class="nav-item"><%= link_to countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
+
+              <li class="menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> スケートボーダー<% end %></li>
+
+              <% if skater_signed_in? %>
 
               <li class="nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
 
               <li class="menu-item nav-item"><%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 新しいパークを登録する<% end %></li>
 
-              <br />
-              <li class="nav-item">
-                <form class="form-inline justify-content-center">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+              <li class="nav-item ml-3">
+                <%= link_to skater_followings_path(current_skater.id), class:"navlink nav-link" do %>Following<% end %>
+                <% current_skater.followings.each do |following| %>
+                  <%= link_to skater_path(following), class:"navlink nav-link" do %>
+                    <%= attachment_image_tag following, :profile_image, class:"profile-image rounded-circle ml-3", size: '30x30', fallback: "no_image.svg" %><%= following.name %>
+                  <% end %>
+                <% end %>
               </li>
+              <% end %>
             </ul>
           </div>
           <%= link_to 'Skatermap', root_path, class:"navbar-brand" %>
@@ -68,7 +74,8 @@
             <p class="navbar-text navbar-right"> ようこそ、管理人さん！ </p>
           <% elsif skater_signed_in? %>
             <%= link_to skater_path(current_skater) do %>
-              <%= attachment_image_tag @skater, :profile_image, class:"rounded-circle navbar-right", size: '50x50', fallback: "no_image.svg" %>
+              <p class="navlink nav-link navbar-text navbar-right"><%= current_skater.name %></p>
+              <%= attachment_image_tag current_skater, :profile_image, class:"rounded-circle navbar-right", size: '50x50', fallback: "no_image.svg" %>
             <% end %>
           <% else %>
             <%= link_to new_skater_registration_path do %>

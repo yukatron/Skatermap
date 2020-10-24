@@ -25,9 +25,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.body {
-	margin: 3em;
-}
+
 .menu-item {
   border-bottom: 1px dotted #9d8e87;
   icon {
@@ -60,7 +58,8 @@
   width: 30px;
   height: 22px;
   vertical-align: middle;
-  margin: 2em;
+  margin-top: 2em;
+  margin-left: 2em;
 }
 #nav-open span, #nav-open span:before, #nav-open span:after {
   position: absolute;
