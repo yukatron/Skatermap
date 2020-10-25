@@ -19,5 +19,8 @@ class Park < ApplicationRecord
 
 	def to_param
     	return self.name
+    	if admin_signed_in?
+    		return self.id
+    	end
   	end
 end

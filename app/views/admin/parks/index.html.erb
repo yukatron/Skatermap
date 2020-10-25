@@ -1,2 +1,64 @@
-<h1>Admin::Parks#index</h1>
-<p>Find me in app/views/admin/parks/index.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<h3 class="page-header">パーク一覧</h3>
+		</div>
+		<div class="row justify-content-center">
+			<% @parks.each do |park| %>
+				<div class="page-content col-12">
+					<div class="col-12">
+						<h5><%= park.name %>の情報</h5>
+						<div class="btn-group float-right"><%= link_to 'edit', edit_admin_park_path(park), class:"btn btn-sm btn-outline-success mr-3" %><%=link_to 'delete', admin_park_path(park), method: :delete, class:"btn btn-sm btn-outline-danger" %></div>
+					</div>
+					<table class="table table-hover">
+						<tbody>
+							<tr>
+								<th class="info">パークid</th>
+								<td><%= park.id %></td>
+							</tr>
+							<tr>
+								<th class="info">パーク画像</th>
+								<td>
+									<% if park.images.attached? %>
+										<% park.images.each do |image| %>
+										<%= image_tag image.variant(resize: "150x150"), class:"image" %>
+										<% end %>
+									<% end %>
+								</td>
+							</tr>
+							<tr>
+								<th class="info">パーク名</th>
+								<td><%= park.name %></td>
+							</tr>
+							<tr>
+								<th class="info">住所</th>
+								<td><%= park.zip %><%= park.address %></td>
+							</tr>
+							<tr>
+								<th class="info">電話番号</th>
+								<td><%= park.tel %></td>
+							</tr>
+							<tr>
+								<th class="info">料金</th>
+								<td><%= park.price %></td>
+							</tr>
+							<tr>
+								<th class="info">使用可能時間</th>
+								<td><%= park.open_time %></td>
+							</tr>
+							<tr>
+								<th class="info">国</th>
+								<td><%= park.country.name %></td>
+							</tr>
+							<tr>
+								<th class="info">パーク説明</th>
+								<td><%= park.description %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			<% end %>
+			<%= paginate @parks %>
+		</div>
+	</div>
+</div>

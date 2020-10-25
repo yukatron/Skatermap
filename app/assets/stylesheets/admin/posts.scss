@@ -1,3 +1,13 @@
 // Place all the styles related to the admin/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.video-column {
+	width: 25%;
+}
+.title-columm {
+	width: 15%;
+}
+.table li:hover {
+	background-color: lightblue;
+}

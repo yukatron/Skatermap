@@ -49,12 +49,12 @@ Rails.application.routes.draw do
 	end
 
   namespace :admin do
-    resources :skaters, only: [:index, :edit, :update]
-    resources :parks, only: [:edit, :update, :destroy, :index]
-    resources :posts, only: [:index, :show, :destroy] do
+    resources :skaters, param: :id, only: [:index, :edit, :update]
+    resources :parks, param: :id, only: [:edit, :update, :destroy, :index]
+    resources :posts, param: :id, only: [:index, :destroy] do
       resources :comments, only: [:destroy]
     end
-    resources :countries, only: [:index, :show, :edit, :update, :destroy]
+    resources :countries, param: :id, only: [:index, :show, :edit, :update, :destroy]
   end
 
 

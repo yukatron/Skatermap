@@ -15,5 +15,8 @@ class Post < ApplicationRecord
 
   	def to_param
     	return self.title
+    	if admin_signed_in?
+    		return self.id
+    	end
   	end
 end

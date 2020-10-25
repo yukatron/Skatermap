@@ -1,2 +1,14 @@
-<h1>Admin::Parks#edit</h1>
-<p>Find me in app/views/admin/parks/edit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="form-header">
+				<h4 class="form-header-title text-left"><%= @park.name %>の情報</h4>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="form col-10">
+				<%= render "parks/form", park: @park, country: @country %>
+			</div>
+		</div>
+	</div>
+</div>
