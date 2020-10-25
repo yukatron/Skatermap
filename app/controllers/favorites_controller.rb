@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 	before_action :authenticate_skater!
+	before_action :ensure_current_skater
+
 	def create
 		post = Post.find(params[:post_id])
 		favorite = current_skater.favorites.new(post_id: post.id)

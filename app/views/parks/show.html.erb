@@ -7,7 +7,7 @@
 	</div>
 	<div class="row justify-content-center">
 		<% if @park.images.attached? %>
-			<%= @park.images.each do |image| %>
+			<% @park.images.each do |image| %>
 				<%= image_tag image.variant(resize: "200x200"), class:"image" %>
 			<% end %>
 		<% end %>

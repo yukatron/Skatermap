@@ -52,7 +52,7 @@ class PostsController < ApplicationController
 
 	private
 	def set_post
-		@post = Post.find(params[:id])
+		@post = Post.find_by(title: params[:title])
 	end
 	def post_params
 		params.require(:post).permit(:title, :caption, :video, :park_id)

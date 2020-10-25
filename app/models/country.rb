@@ -10,4 +10,7 @@ class Country < ApplicationRecord
 
 	validates :name, presence: true, uniqueness: true
 
+	def to_param
+    	return self.name
+  	end
 end

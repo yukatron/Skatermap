@@ -84,6 +84,6 @@ class ParksController < ApplicationController
 	end
 
 	def set_park
-		@park = Park.find(params[:id])
+		@park = Park.find_by(name: params[:name])
 	end
 end

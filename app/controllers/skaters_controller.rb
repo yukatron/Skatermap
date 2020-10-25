@@ -1,6 +1,8 @@
 class SkatersController < ApplicationController
   before_action :authenticate_skater!, except: [:index]
-  before_action :set_skater, only: [:show, :edit, :update]
+  before_action :skater_is_deleted
+  before_action :set_skater, only: [:show, :edit, :update, :withdraw]
+  before_action :set_current_skater, only: [:edit, :withdraw]
 
   def show
   	@posts = @skater.posts.page(params[:page]).reverse_order
@@ -28,6 +30,13 @@ class SkatersController < ApplicationController
     end
   end
 
+  def withdraw
+    @skater.update(is_deleted: true)
+    reset_session
+    flash[:notice] ="アカウントを削除しました"
+    redirect_to root_path
+  end
+
 
   private
   def skater_params
@@ -39,6 +48,7 @@ class SkatersController < ApplicationController
   end
 
   def set_skater
-    @skater = Skater.find(params[:id])
+    @skater = Skater.find_by(name: params[:name])
   end
+
 end

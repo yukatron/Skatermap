@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
-  before_action :authenticate_skater!, except: [:show, :index]
+  before_action :authenticate_skater!, except: [:index, :show]
+  before_action :skater_is_deleted
 	before_action :set_country, only: [:edit, :update, :show, :destroy]
 
   def new
@@ -52,6 +53,6 @@ class CountriesController < ApplicationController
   end
 
   def set_country
-  	@country = Country.find(params[:id])
+  	@country = Country.find_by(name: params[:name])
   end
 end
