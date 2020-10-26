@@ -1,2 +1,30 @@
-<h1>Admin::Countries#index</h1>
-<p>Find me in app/views/admin/countries/index.html.erb</p>
+<div class="body">
+	<div class="container">
+		<p class="notice"><%= notice %></p>
+		<div class="row">
+			<h3 class="page-header">国一覧</h3>
+		</div>
+		<div class="row">
+			<div class="col-4">
+				<div class="list-group" id="list-tab" role="tablist">
+					<% @countries.each do |country| %>
+					<a class="list-group-item list-group-item-action" id="list-<%= country.name %>-list" data-toggle="list" href="#<%= country.name %>" role="tab" aria-controls="<%= country.name %>"><%= country.name %></a>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="tab-content" id="nav-tabContent">
+					<% @countries.each do |country| %>
+					<div class="tab-pane fade" id="<%= country.name %>" role="tabpanel" aria-labelledby="list-<%= country.name %>-list">
+						<div class="col-12"><%= country.description %></div>
+						<div class="col-12 mt-4">パーク数：  <%= link_to country.parks.count, admin_parks_path(country_id: country.id) %>
+						</div>
+						<div class="col-12 text-right mt-4"><%= link_to 'Edit',edit_admin_country_path(country.id), class:"btn btn-outline-info btn-sm mr-4" %><%= link_to ' Delete', admin_country_path(country.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-danger" %>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -46,7 +46,7 @@
 	        			</div>
 	        			<div class="row justify-content-center">
 		        			<div class="content col-9">
-								<p><%= @skater.biography %></p>
+								<p><%= simple_format(@skater.biography) %></p>
 								<% if @skater.biography.blank? %>
 								<p class="text-center">何も書かれていません</p>
 								<% end %>

@@ -1,22 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'countries/index'
-    get 'countries/show'
-    get 'countries/edit'
-  end
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-  end
-  namespace :admin do
-    get 'parks/edit'
-    get 'parks/index'
-  end
-  namespace :admin do
-    get 'skaters/index'
-    get 'skaters/edit'
-  end
   	root 'home#top'
   	get 'about' => 'home#about', as: :about
 
@@ -54,7 +37,7 @@ Rails.application.routes.draw do
     resources :posts, param: :id, only: [:index, :destroy] do
       resources :comments, only: [:destroy]
     end
-    resources :countries, param: :id, only: [:index, :show, :edit, :update, :destroy]
+    resources :countries, param: :id, only: [:index, :edit, :update, :destroy]
   end
 
 

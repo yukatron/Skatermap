@@ -1,5 +1,6 @@
 <div class="body">
 	<div class="container">
+		<p class="notice"><%= notice %></p>
 		<div class="row">
 			<h3 class="page-header">パーク一覧</h3>
 		</div>
@@ -8,9 +9,9 @@
 				<div class="page-content col-12">
 					<div class="col-12">
 						<h5><%= park.name %>の情報</h5>
-						<div class="btn-group float-right"><%= link_to 'edit', edit_admin_park_path(park), class:"btn btn-sm btn-outline-success mr-3" %><%=link_to 'delete', admin_park_path(park), method: :delete, class:"btn btn-sm btn-outline-danger" %></div>
+						<div class="btn-group float-right"><%= link_to 'edit', edit_admin_park_path(park.id), class:"btn btn-sm btn-outline-success mr-3" %><%=link_to 'delete', admin_park_path(park.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-danger" %></div>
 					</div>
-					<table class="table table-hover">
+					<table class="park-table table table-hover">
 						<tbody>
 							<tr>
 								<th class="info">パークid</th>
@@ -32,7 +33,8 @@
 							</tr>
 							<tr>
 								<th class="info">住所</th>
-								<td><%= park.zip %><%= park.address %></td>
+								<td><%= park.zip %><%= park.address %><br>
+									in <%= park.country.name %></td>
 							</tr>
 							<tr>
 								<th class="info">電話番号</th>

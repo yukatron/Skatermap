@@ -42,6 +42,16 @@
                 <li class="menu-item nav-item"><%= link_to "ログイン", new_skater_session_path, class:"navlink nav-link" %></li>
               <% end %>
 
+              <% if admin_signed_in? %>
+              <li class="nav-item"><%= link_to admin_posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> 投稿一覧<% end %></li>
+
+              <li class="nav-item"><%= link_to admin_parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> パーク一覧<% end %></li>
+
+              <li class="nav-item"><%= link_to admin_countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
+
+              <li class="menu-item nav-item"><%= link_to admin_skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> アカウント一覧<% end %></li>
+
+              <% else %>
               <li class="menu-item nav-item"><%= link_to about_path, class:"navlink nav-link" do %><%= image_tag 'about.jpg', class:"icon", size: '18x18' %> このサイトについて<% end %></li>
 
               <li class="nav-item"><%= link_to posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> みんなの動画<% end %></li>
@@ -51,6 +61,7 @@
               <li class="nav-item"><%= link_to countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
 
               <li class="menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> スケートボーダー<% end %></li>
+              <% end %>
 
               <% if skater_signed_in? %>
 
@@ -69,7 +80,11 @@
               <% end %>
             </ul>
           </div>
-          <%= link_to 'Skatermap', root_path, class:"navbar-brand" %>
+          <% if admin_signed_in? %>
+            <%= link_to 'Skatermap', admin_skaters_path, class:"navbar-brand" %>
+          <% else %>
+            <%= link_to 'Skatermap', root_path, class:"navbar-brand" %>
+          <% end %>
           <% if admin_signed_in? %>
             <p class="navbar-text navbar-right"> ようこそ、管理人さん！ </p>
           <% elsif skater_signed_in? %>

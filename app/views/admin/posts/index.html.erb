@@ -1,5 +1,6 @@
 <div class="body">
 	<div class="container">
+		<p class="notice"><%= notice %></p>
 		<div class="row">
 			<h3 class="page-header">VIDEOS</h3>
 		</div>
@@ -32,7 +33,7 @@
 								<% post.comments.each do |comment| %>
 								<li>
 								<p><%= comment.skater.name %> ... <%= comment.comment %>
-								<span class="text-right"><%= link_to "削除", admin_post_comment_path(post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info float-right" %></span></p>
+								<span class="text-right"><%= link_to "削除", admin_post_comment_path(post.id, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info float-right" %></span></p>
 								</li>
 								<% end %>
 								</ul>
