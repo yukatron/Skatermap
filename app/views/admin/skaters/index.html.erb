@@ -1,0 +1,55 @@
+<div class="body">
+	<div class="container">
+		<p class="notice"><%= notice %></p>
+		<div class="row">
+			<div class="page-header title col-12">
+				<h4>アカウント一覧</h4>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+
+			<div class="page-content col-12 mt-2">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>アバター</th>
+							<th>アカウント名</th>
+							<th>メールアドレス</th>
+							<th>BIOGRAPHY</th>
+							<th>投稿数</th>
+							<th>退会フラグ</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @skaters.each do |skater| %>
+							<tr>
+								<td><%= skater.id %></td>
+								<td><%= attachment_image_tag skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
+								</td>
+								<td><%= skater.name %></td>
+								<td><%= skater.email %></td>
+								<td><%= skater.biography %></td>
+								<td>
+									<%= link_to skater.posts.count, admin_posts_path(skater_id: skater.id) %>
+								</td>
+								<td>
+									<% if skater.is_deleted == true %>削除済み
+									<% else %> exists
+									<% end %>
+								</td>
+								<td>
+									<%= link_to '編集', edit_admin_skater_path(skater.id) %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<%= paginate @skaters %>
+			</div>
+		</div>
+	</div>
+</div>
+

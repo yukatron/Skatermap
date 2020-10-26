@@ -32,7 +32,8 @@
 					</div>
 
 					<div class="actions">
-						<%= f.submit "Update", class:"btn btn-info col-3 float-right" %>
+						<%= f.submit "Update", class:"btn btn-info col-3 float-left" %>
+						<%= link_to 'アカウント削除', delete_account_path(@skater), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger col-3 float-right" %>
 					</div>
 				<% end %>
 			</div>

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_skater!
+	before_action :ensure_current_skater, except:[:destroy]
 
 	def create
 		post = Post.find(params[:post_id])

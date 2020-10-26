@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def top
   	@skaters = Skater.all
   	@parks = Park.all

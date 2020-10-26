@@ -37,7 +37,7 @@ class ParksController < ApplicationController
 	end
 
 	def edit
-		@country = @park.country
+		@country = Country.new
 	end
 
 	def update
@@ -53,6 +53,8 @@ class ParksController < ApplicationController
 		elsif params[:_country] == "new"
 			country = Country.new(country_params)
 			country.save
+		else
+			country = @park.country
 		end
 		@park.country_id = country.id
 
@@ -84,6 +86,6 @@ class ParksController < ApplicationController
 	end
 
 	def set_park
-		@park = Park.find(params[:id])
+		@park = Park.find_by(name: params[:name])
 	end
 end

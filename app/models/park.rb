@@ -17,4 +17,10 @@ class Park < ApplicationRecord
 	end
 	scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
 
+	def to_param
+    	return self.name
+    	if admin_signed_in?
+    		return self.id
+    	end
+  	end
 end
