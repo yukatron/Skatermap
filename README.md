@@ -1,11 +1,17 @@
 # Skatermap
 
 ## サイト概要
-スケボをする人たちのためのスケートボード専用動画・情報サイト
-知らない場所へ行ってもパーク情報がすぐ確認できる
+スケートボード専用動画・情報サイト
+・ログインして、自分の動画をアップしたり、他人の動画が観れる。
+ - 人の動画にコメントしたり、気に入った人をフォローできる。
+・パークを探せる。
+ - 新しいパークを登録したり、情報を編集できる。
+・各国でのスケボ使用に関する情報をシェアできる。
+
+・管理人側サイトで不適切なデータを削除、編集できる。
 
 ### サイトテーマ
-初心者からプロの人たちまで、お互いに意識しあえる場所。
+初心者からプロの人たちまで、みんなが情報交換できる場所。
 このサイトを通じてもっとたくさんの人にスケートボードのことを知ってもらい、
 スケボの認知度が上がればいい。
 
@@ -18,7 +24,8 @@
 スケボに興味のある全ての人
 
 ### 主な利用シーン
-
+他の人の技を見て練習したい時。またはアドバイスが欲しい時。
+旅行へスケボを持って行こうか迷った時。
 
 ## 設計書
 
@@ -34,5 +41,9 @@ https://docs.google.com/spreadsheets/d/1YGvtNR8zUSl2EWomaRTQs4LfqcDJo-dG72YvnvUY
 - 仮想環境：Vagrant,VirtualBox
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- Unsplash https://unsplash.com/
+- Pixabay https://pixabay.com/ja/videos/
+- Astronauts_Collection　https://dribbble.com/shots/1896042-Happy-Friday-Space-Travelers
+- Human Pictogram2.0 http://pictogram2.com/
+- icooon mono https://icooon-mono.com/
+
