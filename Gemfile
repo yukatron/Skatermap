@@ -75,6 +75,9 @@ gem 'pry-byebug'
 gem 'jquery-turbolinks'
 gem 'kaminari','~> 1.2.1'
 gem 'geocoder'
-gem 'dotenv-rails'
 gem 'mini_magick'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
