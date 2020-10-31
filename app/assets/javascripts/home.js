@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load',function () {
-  $("#theTarget").skippr({
+  $("#slide").skippr({
     transition : 'slide',
 	speed : 2000,
 	easing : 'easeOutQuart',
