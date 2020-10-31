@@ -43,33 +43,33 @@
               <% end %>
 
               <% if admin_signed_in? %>
-              <li class="nav-item"><%= link_to admin_posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> 投稿一覧<% end %></li>
+              <li class="menu-item nav-item"><%= link_to admin_posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> 投稿一覧<% end %></li>
 
-              <li class="nav-item"><%= link_to admin_parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> パーク一覧<% end %></li>
+              <li class="menu-item nav-item"><%= link_to admin_parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> パーク一覧<% end %></li>
 
-              <li class="nav-item"><%= link_to admin_countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
+              <li class="menu-item nav-item"><%= link_to admin_countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to admin_skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> アカウント一覧<% end %></li>
+              <li class="item menu-item nav-item"><%= link_to admin_skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> アカウント一覧<% end %></li>
 
               <% else %>
-              <li class="menu-item nav-item"><%= link_to about_path, class:"navlink nav-link" do %><%= image_tag 'about.jpg', class:"icon", size: '18x18' %> このサイトについて<% end %></li>
+              <li class="item menu-item nav-item"><%= link_to about_path, class:"navlink nav-link" do %><%= image_tag 'about.jpg', class:"icon", size: '18x18' %> このサイトについて<% end %></li>
 
-              <li class="nav-item"><%= link_to posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> みんなの動画<% end %></li>
+              <li class="menu-item nav-item"><%= link_to posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> みんなの動画<% end %></li>
 
-              <li class="nav-item"><%= link_to parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> スケボパーク<% end %></li>
+              <li class="menu-item nav-item"><%= link_to parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> スケボパーク<% end %></li>
 
-              <li class="nav-item"><%= link_to countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
+              <li class="menu-item nav-item"><%= link_to countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> スケートボーダー<% end %></li>
+              <li class="item menu-item nav-item"><%= link_to skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> スケートボーダー<% end %></li>
               <% end %>
 
               <% if skater_signed_in? %>
 
-              <li class="nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
+              <li class="menu-item nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 新しいパークを登録する<% end %></li>
+              <li class="item menu-item nav-item"><%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 新しいパークを登録する<% end %></li>
 
-              <li class="nav-item ml-3">
+              <li class="menu-item nav-item ml-3">
                 <%= link_to skater_followings_path(current_skater.id), class:"navlink nav-link" do %>Following<% end %>
                 <% current_skater.followings.each do |following| %>
                   <%= link_to skater_path(following), class:"navlink nav-link" do %>
