@@ -3,9 +3,11 @@
 		<%= render "layouts/error_messages", hoge: post %>
 
 		<div class="form-group">
-			<%= f.label :video, for:"upload-video", class:"video-preview"%>
+			<%= f.label :video, for:"upload-video" %>
 			<%= f.file_field :video, id:"upload-video" %>
 		</div>
+
+		<div class="video-preview"></div>
 
 		<div class="form-group">
 			<%= f.label :title %>

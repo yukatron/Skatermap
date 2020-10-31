@@ -24,4 +24,4 @@ $(document).on('turbolinks:load', function() {
       })(file);
       reader.readAsDataURL(file);
     });
-  });
+});

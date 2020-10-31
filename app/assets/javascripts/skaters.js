@@ -1,6 +1,5 @@
 $("document").ready(function() {
 
-
 	$('#tab-contents .tab[id != "profile"]').hide();
 
 	$('#tab-menu a').on('click', function() {
