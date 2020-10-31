@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :skater_id, null: false
       t.integer :park_id
       t.string :title, null: false
+      t.string :video
       t.text :cation
 
       t.timestamps null: false
