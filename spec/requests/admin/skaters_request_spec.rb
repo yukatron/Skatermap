@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "Admin::Skaters", type: :request do
-	describe 'アカウント一覧ページ' do
+RSpec.describe "Admin::Session", type: :request do
+	describe '管理人ログインページ' do
 		before do
-			get admin_skaters_path
+			get new_admin_session_path
+			fill_in 'email', with: 'admin@mail.com'
+			fill_in 'password', with: 'adminadmin'
+			click_button 'ログイン'
 		end
-		it 'リクエストは200 OKとなる' do
-			expect(response.status).to eq 302
-		end
-		it 'アカウント一覧が正しく表示される' do
-			expect(response.body).to include("アカウント一覧")
+		it 'アカウント一覧へ遷移する' do
+			expect(page).to have_content 'アカウント一覧'
 		end
 	end
 end

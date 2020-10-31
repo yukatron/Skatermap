@@ -47,3 +47,6 @@ https://docs.google.com/spreadsheets/d/1YGvtNR8zUSl2EWomaRTQs4LfqcDJo-dG72YvnvUY
 - Human Pictogram2.0 http://pictogram2.com/
 - icooon mono https://icooon-mono.com/
 
+##参考サイト
+- https://saruwakakun.com/design/tips/icon
+
