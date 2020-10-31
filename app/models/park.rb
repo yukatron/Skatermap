@@ -1,5 +1,5 @@
 class Park < ApplicationRecord
-	belongs_to :country, optional: true
+	belongs_to :country
 	has_many :posts
 
 	has_many_attached :images
@@ -9,6 +9,7 @@ class Park < ApplicationRecord
 
 	validates :name, presence: true
 	validates :address, presence: true
+	validates :country_id, presence: true
 
 
 	scope :search, -> (search_params) do

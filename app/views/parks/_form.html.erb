@@ -35,27 +35,27 @@
 				<label><%= radio_button_tag("_country", "exist") %>  国
 				</label>
 			</div>
-			<div class="m-3">
-				<%= collection_select(:Country, :id, Country.all, :id, :name, include_blank: true) %>
-			</div>
+				<div class="m-3">
+					<%= collection_select(:Country, :id, Country.all, :id, :name, include_blank: true) %>
+				</div>
 
 			<div class="radio">
 				<label><%= radio_button_tag("_country", "new") %>  新しく国を登録</label>
 			</div>
 
-			<div id="form" class="form m-3">
-				<%= fields_for(country) do |a| %>
-					<div class="form-group">
-						<%= a.label :name %>
-						<%= a.text_field :name, class:"form-control" %>
-					</div>
-				<% end %>
-			</div>
+				<div id="form" class="form m-3">
+					<%= fields_for(country) do |a| %>
+						<div class="form-group">
+							<%= a.label :name %>
+							<%= a.text_field :name, class:"form-control" %>
+						</div>
+					<% end %>
+				</div>
 		</div>
 
 		<div class="form-group">
 			<%= f.label :images, '画像'%>
-			<%= f.file_field :images, multiple: true%>
+			<%= f.file_field :images, multiple: true　%>
 		</div>
 
 		<div class="form-group">

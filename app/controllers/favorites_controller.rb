@@ -3,14 +3,15 @@ class FavoritesController < ApplicationController
 	before_action :ensure_current_skater
 
 	def create
-		post = Post.find(params[:post_id])
-		favorite = current_skater.favorites.new(post_id: post.id)
+		post = Post.find_by(title: params[:post_title])
+		favorite = current_skater.favorites.new
+		favorite.post_id = post.id
 		favorite.save
 		redirect_to post_path(post)
 	end
 
 	def destroy
-		post = Post.find(params[:post_id])
+		post = Post.find_by(title: params[:post_title])
 		favorite = current_skater.favorites.find_by(post_id: post.id)
 		favorite.destroy
 		redirect_to post_path(post)

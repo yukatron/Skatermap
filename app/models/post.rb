@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
 	has_one_attached :video
 
-	validates :title, presence: true
+	validates :title, presence: true, uniqueness: true
 	validates :skater_id, presence: true
 
 	def favorited_by?(skater)

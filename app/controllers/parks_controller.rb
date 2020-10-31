@@ -19,7 +19,7 @@ class ParksController < ApplicationController
 		@park.country_id = country.id
 
 		if @park.save
-			redirect_to park_path(@park.id)
+			redirect_to park_path(@park)
 		else
 			@country = Country.new
 			render :new

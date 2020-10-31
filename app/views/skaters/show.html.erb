@@ -11,13 +11,11 @@
 						<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
 					<% else %>
 	  					<% if current_skater.following?(@skater) %>
-		  					<%= form_for(@skater, url: unfollow_path(@skater), method: :delete) do |f| %>
-		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		  					<%= form_for(@skater, url: unfollow_path(id: @skater.id), method: :delete) do |f| %>
 		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Unfollow<% end %>
 							<% end %>
 		  				<% else %>
-		    				<%= form_for(@skater, url: follow_path(@skater), method: :post) do |f| %>
-		  						<%= f.hidden_field :follow_id, value: @skater.id %>
+		    				<%= form_for(@skater, url: follow_path(id: @skater.id), method: :post) do |f| %>
 		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Follow<% end %>
 		   					<% end %>
 	  					<% end %>

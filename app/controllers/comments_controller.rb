@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 	before_action :ensure_current_skater, except:[:destroy]
 
 	def create
-		post = Post.find(params[:post_id])
+		post = Post.find_by(title: params[:post_title])
 		comment = current_skater.comments.new(comment_params)
 		comment.post_id = post.id
 		comment.save
@@ -11,8 +11,10 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-		redirect_to post_path(params[:post_id])
+		comment = Comment.find(params[:id])
+		post = comment.post
+		comment.destroy
+		redirect_to post_path(post)
 	end
 
 	private

@@ -31,7 +31,7 @@
                   <%= current_skater.name %></p>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'PROFILE', skater_path(current_skater.id), class:"navlink nav-link btn btn-outline-info btn-sm mb-1 ml-3 mr-3" %>
+                  <%= link_to 'PROFILE', skater_path(current_skater.name), class:"navlink nav-link btn btn-outline-info btn-sm mb-1 ml-3 mr-3" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_skater_session_path, method: :delete, class:"navlink nav-link btn btn-outline-secondary btn-sm mb-1 ml-3 mr-3 mb-4" %>
