@@ -45,11 +45,11 @@
               <% if admin_signed_in? %>
               <li class="nav-item"><%= link_to admin_posts_path, class:"navlink nav-link" do %><i class="fas fa-th"></i> 投稿一覧<% end %></li>
 
-              <li class="nav-item"><%= link_to admin_parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpeg', class:"icon" %> パーク一覧<% end %></li>
+              <li class="nav-item"><%= link_to admin_parks_path, class:"navlink nav-link" do %><%= image_tag 'skateboard.jpg', class:"icon" %> パーク一覧<% end %></li>
 
               <li class="av-item"><%= link_to admin_countries_path, class:"navlink nav-link" do %><i class="fas fa-globe-europe"></i> Countries<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to admin_skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpeg', class:"icon" %> アカウント一覧<% end %></li>
+              <li class="menu-item nav-item"><%= link_to admin_skaters_path, class:"navlink nav-link" do %><%= image_tag 'skaters.jpg', class:"icon" %> アカウント一覧<% end %></li>
 
               <% else %>
               <li class="menu-item nav-item"><%= link_to about_path, class:"navlink nav-link" do %><%= image_tag 'about.jpg', class:"icon", size: '18x18' %> このサイトについて<% end %></li>
