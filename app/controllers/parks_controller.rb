@@ -10,13 +10,15 @@ class ParksController < ApplicationController
 	def create
 		@park = Park.new(park_params)
 
-		if params[:_country] == "exist"
-			country = Country.find(params[:Country][:id])
-		elsif params[:_country] == "new"
-			country = Country.new(country_params)
-			country.save
+		if params[:_country]
+			if params[:_country] == "exist"
+				country = Country.find(params[:Country][:id])
+			elsif params[:_country] == "new"
+				country = Country.new(country_params)
+				country.save
+			end
+			@park.country_id = country.id
 		end
-		@park.country_id = country.id
 
 		if @park.save
 			redirect_to park_path(@park)

@@ -8,7 +8,7 @@
 	                	<% end %>
 	                </td>
 	                <td><%= link_to skater_path(skater), class:"skater-link" do %>
-	                	<%= skater.name %>
+	                	<%= skater.name %><% if current_skater == skater %><div class="skater-me">IT'S ME !</div><% end %>
 	                	<% end %>
 	                </td>
 	            </tr>
