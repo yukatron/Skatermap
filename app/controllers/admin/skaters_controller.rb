@@ -12,6 +12,13 @@ class Admin::SkatersController < ApplicationController
   def update
   	@skater = Skater.find(params[:id])
   	if @skater.update(skater_params)
+      if @skater.is_deleted == true
+        followings = Relationship.where(skater_id: @skater.id)
+        followings.destroy_all if followings
+        followers = Relationship.where(follow_id: @skater.id)
+
+        followers.destroy_all if followers
+      end
   		flash[:notice]= "スケーター情報を変更しました"
   		redirect_to admin_skaters_path
   	else

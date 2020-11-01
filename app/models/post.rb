@@ -19,4 +19,5 @@ class Post < ApplicationRecord
     		return self.id
     	end
   	end
+
 end

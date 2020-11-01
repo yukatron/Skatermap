@@ -6,6 +6,10 @@ class SkatersController < ApplicationController
 
   def show
   	@posts = @skater.posts.page(params[:page]).reverse_order
+    if @skater.is_deleted == true
+      flash[:notice]="退会済みアカウントの詳細はご覧になれません"
+      redirect_to skaters_path
+    end
   end
 
   def index
@@ -35,6 +39,8 @@ class SkatersController < ApplicationController
   def withdraw
     @skater.update(is_deleted: true)
     reset_session
+    Relationship.where(skater_id: @skater.id).destroy
+    Relationship.where(follow_id: @skater_id).destroy
     flash[:notice] ="アカウントを削除しました"
     redirect_to root_path
   end
