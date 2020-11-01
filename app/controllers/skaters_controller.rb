@@ -37,7 +37,6 @@ class SkatersController < ApplicationController
     redirect_to root_path
   end
 
-
   private
   def skater_params
     params.require(:skater).permit(:name, :biography, :profile_image, :remove_profile_image)
