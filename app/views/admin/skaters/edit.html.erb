@@ -33,7 +33,7 @@
 
 					<div class="form-group">
 						<label for="is_deleted">アカウント状態</label>
-						<%= f.select :is_deleted, [["既存", false], [:"削除", true]] %>
+						<%= f.select :is_deleted, [["既存", false], ["削除", true]],:prompt => false %>
 					</div>
 
 					<div class="actions">

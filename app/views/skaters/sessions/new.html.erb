@@ -10,7 +10,9 @@
     <div class="row">
       <div class="form col-sm-7">
         <%= form_for(resource, as: resource_name, url: skater_session_path) do |f| %>
-        <%= render "skaters/shared/error_messages", resource: resource %>
+        <% flash.each do |message_type, message| %>
+         <%= content_tag :div, message, class:message_type %>
+         <% end %>
 
           <div class="form-group">
             <%= f.label :email, class:"col-form-label" %>
