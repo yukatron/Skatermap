@@ -1,10 +1,10 @@
 class SkatersController < ApplicationController
   before_action :authenticate_skater!, except: [:index]
   before_action :skater_is_deleted
-  before_action :set_skater, only: [:show, :edit, :update, :withdraw]
-  before_action :set_current_skater, only: [:edit, :withdraw]
+  before_action :set_current_skater, only: [:edit, :update, :withdraw]
 
   def show
+    @skater = Skater.find_by(name: params[:name])
   	@posts = @skater.posts.page(params[:page]).reverse_order
     if @skater.is_deleted == true
       flash[:notice]="退会済みアカウントの詳細はご覧になれません"
@@ -39,8 +39,10 @@ class SkatersController < ApplicationController
   def withdraw
     @skater.update(is_deleted: true)
     reset_session
-    Relationship.where(skater_id: @skater.id).destroy
-    Relationship.where(follow_id: @skater_id).destroy
+    followings = Relationship.where(skater_id: @skater.id)
+    followings.destroy_all if followings
+    followers = Relationship.where(follow_id: @skater.id)
+    followers.destroy_all if followers
     flash[:notice] ="アカウントを削除しました"
     redirect_to root_path
   end
@@ -54,8 +56,8 @@ class SkatersController < ApplicationController
     params.fetch(:search, {}).permit(:name)
   end
 
-  def set_skater
-    @skater = Skater.find_by(name: params[:name])
+  def set_current_skater
+    @skater = current_skater
   end
 
 end

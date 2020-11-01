@@ -17,10 +17,5 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
       end
     end
-
-    def set_current_skater
-      if @skater.id != current_skater.id
-        redirect_to root_path
-    end
   end
 end
