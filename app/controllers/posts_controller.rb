@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 		end
 		if @post.save
 			flash[:notice] = "投稿成功しました"
-			redirect_to post_path(@post.id)
+			redirect_to post_path(@post.title)
 		else
 			@parks = Park.all
 			render :new

@@ -102,6 +102,46 @@ section .videos {
   color: #9d8e87;
   text-decoration: none;
 }
+.skater-me {
+  position: relative;
+  display: inline-block;
+  margin: 1em 0 1em 5em;
+  padding: 3px;
+  width: 10%;
+  line-height: 2.5em;
+  text-align: center;
+  color: #fff;
+  background: #008080;
+  font-size: 0.7em;
+  border-radius: 50%;
+  box-sizing: border-box;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -1em;
+    width: 0.8em;
+    height: 0.8em;
+    bottom: 0.3em;
+    border-radius: 70%;
+    background: #008080;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: -2em;
+    width: 0.5em;
+    height: 0.5em;
+    bottom: 0.2em;
+    border-radius: 80%;
+    background: #008080;
+  }
+}
+.skater-is_deleted {
+  margin-left: 5em;
+  size: 0.7em;
+  color: #008080;
+}
+
 div .search-form {
   .form-group {
     border-bottom: 1px solid #9d8e87;

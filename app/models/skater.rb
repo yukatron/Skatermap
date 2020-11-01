@@ -31,8 +31,8 @@ class Skater < ApplicationRecord
   end
 
   validates :name, presence: true, uniqueness: true
-  validates :is_deleted, default: false
-  validates :email, presence: true
+  validates :is_deleted, inclusion: { in: [true, false]}, defalut: false
+
 
   attachment :profile_image
 
@@ -47,5 +47,9 @@ class Skater < ApplicationRecord
     if admin_signed_in?
       return self.id
     end
+  end
+
+  def active_for_authentication?
+    super && ( self.is_deleted == false)
   end
 end

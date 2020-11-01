@@ -9,9 +9,11 @@ class SkatersController < ApplicationController
   end
 
   def index
-    @skaters = Skater.all
+    @skaters = Skater.where(is_deleted: false).page(params[:page]).reverse_order
     @search_params = skater_search_params
-    @skaters = Skater.search(@search_params).page(params[:page]).reverse_order
+    if params[:search]
+      @skaters = Skater.search(@search_params).page(params[:page]).reverse_order
+    end
   end
 
   def edit
@@ -36,7 +38,6 @@ class SkatersController < ApplicationController
     flash[:notice] ="アカウントを削除しました"
     redirect_to root_path
   end
-
 
   private
   def skater_params

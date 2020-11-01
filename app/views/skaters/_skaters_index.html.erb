@@ -9,6 +9,8 @@
 	                </td>
 	                <td><%= link_to skater_path(skater), class:"skater-link" do %>
 	                	<%= skater.name %>
+	                	<% if current_skater == skater %><div class="skater-me">IT'S ME !</div><% end %>
+	                	<% if skater.is_deleted? %><span class="skater-is_deleted">退会済みアカウントです</span><% end %>
 	                	<% end %>
 	                </td>
 	            </tr>
