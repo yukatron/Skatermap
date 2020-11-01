@@ -27,7 +27,7 @@
 						<% @skaters.each do |skater| %>
 							<tr>
 								<td><%= skater.id %></td>
-								<td><%= attachment_image_tag skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
+								<td><%= attachment_image_tag skater, :profile_image, class:"img-fluid rounded-circle", size: '100x100', fallback: "no_image.svg" %>
 								</td>
 								<td><%= skater.name %></td>
 								<td><%= skater.email %></td>

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	    end
   	end
 
-  	#退会済みユーザーへの対応
+  	#退会済みアカウント
     def skater_is_deleted
       if skater_signed_in? && current_skater.is_deleted?
       	flash[:notice] = "このアカウントは無効です"
