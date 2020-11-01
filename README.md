@@ -2,11 +2,17 @@
 
 ## サイト概要
 スケートボード専用動画・情報サイト
+
 ・ログインして、自分の動画をアップしたり、他人の動画が観れる。
+
  - 人の動画にコメントしたり、気に入った人をフォローできる。
+
 ・パークを探せる。
+
  - 新しいパークを登録したり、情報を編集できる。
+
 ・各国でのスケボ使用に関する情報をシェアできる。
+
 
 ・管理人側サイトで不適切なデータを削除、編集できる。
 
@@ -47,6 +53,6 @@ https://docs.google.com/spreadsheets/d/1YGvtNR8zUSl2EWomaRTQs4LfqcDJo-dG72YvnvUY
 - Human Pictogram2.0 http://pictogram2.com/
 - icooon mono https://icooon-mono.com/
 
-##参考サイト
+## 参考サイト
 - https://saruwakakun.com/design/tips/icon
 
