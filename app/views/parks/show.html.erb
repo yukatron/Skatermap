@@ -39,7 +39,7 @@
 		<div class="col-10">
 			<div class="park-content">
 				<span class="box-title">About this park</span>
-				<p><%= @park.description %></p>
+				<p><%= simple_format(@park.description) %></p>
 			</div>
 		</div>
 		<%= render "posts/videos", posts: @posts %>

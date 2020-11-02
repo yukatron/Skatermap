@@ -42,7 +42,7 @@
 					<p class="lead col-12 float-left"><%= simple_format(@post.caption) %></p>
 				</div>
 			</div>
-			<div class="comments col-md-3 col-12">
+			<div class="comments col-md-4 col-12">
 				<h5>コメント</h5>
 				<div class="form-horizontal clearfix">
 					<%= form_for [@post, @comment] do |f| %>
@@ -69,7 +69,7 @@
 			    		</div>
 
 						<div class="post col-12 pr-0 clearfix">
-							<span class="text-body"><%= comment.comment %></span>
+							<span class="text-body"><%= simple_format(comment.comment) %></span>
 
 							<% if comment.skater == current_skater %>
 								<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
