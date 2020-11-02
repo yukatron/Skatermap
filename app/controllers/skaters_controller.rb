@@ -32,7 +32,7 @@ class SkatersController < ApplicationController
       flash[:notice]= "プロフィールを更新しました"
       redirect_to skater_path(@skater)
     else
-      :edit
+      render :edit
     end
   end
 
