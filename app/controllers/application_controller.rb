@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   	    flash[:notice]="このアカウントは無効です"
   	    redirect_to root_path
 	    end
-  	end
+  end
 
   	#退会済みアカウント
     def skater_is_deleted
@@ -17,10 +17,4 @@ class ApplicationController < ActionController::Base
         redirect_to root_path
       end
     end
-
-    def set_current_skater
-      if @skater.id != current_skater.id
-        redirect_to root_path
-    end
-  end
 end
