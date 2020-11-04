@@ -57,25 +57,25 @@
 
 				<div class="comments-content mt-1">
 					<% @post.comments.each do |comment| %>
-					<div class="row m-0 mt-2">
-						<div class="profile-image col-2 pl-0">
-							<%= link_to skater_path(comment.skater) do %>
-			    				<%= attachment_image_tag comment.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
-			    			<% end %>
-			    		</div>
+						<div class="row m-0 mt-2">
+							<div class="profile-image col-2 pl-0">
+								<%= link_to skater_path(comment.skater) do %>
+				    				<%= attachment_image_tag comment.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
+				    			<% end %>
+				    		</div>
 
-			    		<div class="post col-10 pr-0 clearfix">
-			    			<span class="text-body float-right">by <%= comment.skater.name %></span>
-			    		</div>
+				    		<div class="post col-10 pr-0 clearfix">
+				    			<span class="text-body float-right">by <%= comment.skater.name %></span>
+				    		</div>
 
-						<div class="post col-12 pr-0 clearfix">
-							<span class="text-body"><%= simple_format(comment.comment) %></span>
+							<div class="post col-12 pr-0 clearfix">
+								<span class="text-body"><%= simple_format(comment.comment) %></span>
 
-							<% if comment.skater == current_skater %>
-								<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
-							<% end %>
+								<% if comment.skater == current_skater %>
+									<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
+								<% end %>
+							</div>
 						</div>
-					</div>
 					<% end %>
 				</div>
 

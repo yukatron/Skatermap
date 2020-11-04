@@ -8,13 +8,13 @@
 	<div class="row justify-content-center">
 		<% if @park.images.attached? %>
 			<% @park.images.each do |image| %>
-				<%= image_tag image.variant(resize: "200x200"), class:"image" %>
+				<%= image_tag image.variant(resize: "300x300"), class:"image" %>
 			<% end %>
 		<% end %>
 	</div>
 	<div class="row justify-content-center clearfix">
-		<div class="table-header col-10"><h5>基本情報</h5></div>
-		<table class="table table-hover col-10">
+		<div class="table-header col-11"><h5>基本情報</h5></div>
+		<table class="table table-hover col-12">
 			<tbody>
 				<tr>
 					<th class="active">住所</th>
@@ -36,13 +36,29 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="col-11">
+
+		<div class="col-12">
 			<div class="park-content">
 				<span class="box-title">About this park</span>
 				<p><%= simple_format(@park.description) %></p>
 			</div>
 		</div>
-		<div id="map"></div>
-		<%= render "posts/videos", posts: @posts %>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="header col-12"><h5>地図</h5></div>
+		<div class="input-group col-10 mb-3">
+			<input id="address" type="textbox" value="<%= @park.address %>" class="form-control" aria-describedby="button-addon2">
+			<div class="input-group-append">
+				<input type="button" value="地図を表示" id="button-addon2" class="btn btn-outline" onclick="codeAddress()">
+			</div>
+		</div>
+		<div class="col-10" id="map"></div>
+	</div>
+
+	<div class="row justify-content-center">
+			<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
+			<%= render "posts/videos", posts: @posts %>
+		</div>
 	</div>
 </div>

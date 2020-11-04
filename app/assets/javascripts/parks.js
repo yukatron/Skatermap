@@ -1,23 +1,38 @@
-function initMap() {
+let map
+let geocoder
 
-	var test ={lat: <%= @park.latitude %>, lng: <%= @park.longitude %>};
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 15,
-		center: test
-	});
-	var transitLayer = new google.maps.TransitLayer();
-	transitLayer.setMap(map);
+function initMap(){
+  // geocoderを初期化
+  	geocoder = new google.maps.Geocoder()
+  	if(document.getElementById('map')){
 
-	var contentString = '住所：<%= @park.address %>';
-	var infowindow = new google.maps.InfoWindow({
-		content: contentString
-	});
-
-	var marker = new google.maps.Marker({
-		position:test,
-		map: map,
-		title: contentString
-	});
+	  map = new google.maps.Map(document.getElementById('map'), {
+	  center: {lat: -34.397, lng: 150.644},
+	  zoom: 15
+	  });
+	}
 }
 
-let map;
+function codeAddress(){
+  // 入力を取得
+  let inputAddress = document.getElementById('address').value;
+
+  // geocodingしたあとmapを移動
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+    	let lat = results[0].geometry.location.lat();
+    	let lng = results[0].geometry.location.lng();
+    	let mark = {
+    		lat: lat,
+    		lng: lng
+    	};
+    	map.setCenter(results[0].geometry.location);
+    	let marker = new google.maps.Marker ({
+    		map: map,
+    		position: results[0].geometry.location
+    	});
+    } else {
+    	alert('該当する結果がありませんでした');
+    }
+  });
+}

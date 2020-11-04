@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/2877cf98d2.js" crossorigin="anonymous"></script>
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async, defer></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
     <title>Skatermap</title>
   </head>
 
@@ -66,9 +67,8 @@
 
               <% if skater_signed_in? %>
 
-              <li class="nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
+              <li class="menu-item nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
 
-              <li class="menu-item nav-item"><%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 新しいパークを登録する<% end %></li>
 
               <li class="nav-item ml-3">
                 <%= link_to skater_followings_path(current_skater.id), class:"navlink nav-link" do %>Following<% end %>
