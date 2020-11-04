@@ -16,8 +16,9 @@ class Admin::SkatersController < ApplicationController
         followings = Relationship.where(skater_id: @skater.id)
         followings.destroy_all if followings
         followers = Relationship.where(follow_id: @skater.id)
-
         followers.destroy_all if followers
+        @skater.comments.destroy_all
+        @skater.favorites.destroy_all
       end
   		flash[:notice]= "スケーター情報を変更しました"
   		redirect_to admin_skaters_path

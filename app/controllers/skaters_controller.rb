@@ -43,6 +43,8 @@ class SkatersController < ApplicationController
     followings.destroy_all if followings
     followers = Relationship.where(follow_id: @skater.id)
     followers.destroy_all if followers
+    @skater.comments.destroy_all
+    @skater.favorites.destroy_all
     flash[:notice] ="アカウントを削除しました"
     redirect_to root_path
   end

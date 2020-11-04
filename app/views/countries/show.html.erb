@@ -8,7 +8,7 @@
 	<div class="row justify-content-center">
 		<div class="country-content col-10">
 			<span class="box-title">注意点など</span>
-			<p><%= @country.description %></p>
+			<p><%= simple_format(@country.description) %></p>
 		</div>
 	</div>
 	<div class="row justify-content-center">
