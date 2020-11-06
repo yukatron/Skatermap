@@ -4,7 +4,13 @@
 			<h3>VIDEOS</h3>
 		</div>
 		<div class="row">
-		<%= render "posts/videos", posts: @posts %>
+			<div class="jscroll">
+			<%= render "posts/videos", posts: @posts, class:"jscroll" %>
+				<div class="skill-list">
+					<%= link_to_prev_page @posts, 'Previous', class:"prev" %>
+					<%= link_to_next_page @posts, 'Next', class:"next" %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

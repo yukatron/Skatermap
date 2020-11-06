@@ -18,17 +18,10 @@
 						<h4 class="float-left"><%= @post.title %><br/>
 							<small><%= @post.skater.name %></small></h4>
 
-						<% if @post.favorited_by?(current_skater) %>
-							<%= link_to post_favorites_path(@post), method: :delete do %>
-					    		<span class="text-body float-right"><i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-					    		<%= @post.favorites.count %></span>
-					    	<% end %>
-						<% else %>
-							<%= link_to post_favorites_path(@post), method: :post do %>
-					    		<span class="text-body float-right"><i class="fa fa-heart-o" aria-hidden="true"></i>
-					    		<%= @post.favorites.count %></span>
-					    	<% end %>
-						<% end %>
+							<div id="favorite_buttons_<%= @post.title %>" class="float-right">
+								<%= render partial: 'favorites/favorite', locals: {post: @post} %>
+							</div>
+
 						<span class="text-body float-right mr-3"><i class="far fa-comments"></i><%= @post.comments.count %></span>
 						<% if @post.skater_id == current_skater.id %>
 							<span class="text-body float-right mr-3"><%= link_to 'Edit', edit_post_path(@post), class:"btn btn-white btn-sm" %></span>
@@ -56,7 +49,7 @@
 				</div>
 
 				<div class="comments-content mt-1">
-					<% @post.comments.each do |comment| %>
+					<% @comments.each do |comment| %>
 						<div class="row m-0 mt-2">
 							<div class="profile-image col-2 pl-0">
 								<%= link_to skater_path(comment.skater) do %>
@@ -77,9 +70,11 @@
 							</div>
 						</div>
 					<% end %>
+					<%= link_to_prev_page @comments, 'prev', class:"prev" %>
+					<%= link_to_next_page @comments, 'next', class:"next" %>
 				</div>
 
-				<% if @post.comments.blank? %>
+				<% if @comments.blank? %>
 					<p>コメントはありません</p>
 				<% end %>
 			</div>
@@ -87,10 +82,8 @@
 
 		<div class="index col-10 text-left">
 			<h5><%= @post.skater.name %>さんの動画</h5>
-		</div>
-
-		<div class="row">
 			<%= render "posts/videos", posts: @posts %>
+			<%= paginate @posts %>
 		</div>
 	</div>
 </div>

@@ -59,6 +59,7 @@
 	<div class="row justify-content-center">
 			<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
 			<%= render "posts/videos", posts: @posts %>
+			<%= paginate @posts %>
 		</div>
 	</div>
 </div>

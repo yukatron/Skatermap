@@ -3,13 +3,14 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@posts = Post.page(params[:page]).reverse_order
+		@posts = Post.page(params[:page]).reverse_order.without_count
 	end
 
 	def show
 		skater = Skater.find_by(id: @post.skater_id)
 		@posts = skater.posts.page(params[:page]).reverse_order
 		@comment = Comment.new
+		@comments = @post.comments.page(params[:page]).without_count.per(4)
 	end
 
 	def new
