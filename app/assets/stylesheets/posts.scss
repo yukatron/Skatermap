@@ -5,15 +5,14 @@
 	border-top: 1px solid #9d8e87;
 	padding: 1em;
 }
-.profile-image {
-	margin-top: 6px;
-}
 .post {
 	float: left;
 	padding-left: 3px;
 	margin-bottom: 3px;
 	span {
 		margin-top: 3px;
+		max-width: 128px;
+		font-size: 0.7em;
 		a {
 		 text-decoration: none;
 		 color: #000;
@@ -31,11 +30,19 @@
 		color: #9d8e87;
 	}
 }
+.favorite-button {
+	text-decoration: none;
+	color: #000;
+	&:hover {
+		text-decoration: none;
+	}
+}
 .comments {
 	h5 {
 		border-bottom: 1px solid #9d8e87;
 	}
 	.comments-content {
+		height: 500px;
 		.row:hover {
 			background: #f0fff0;
 		}
