@@ -65,32 +65,43 @@ section .videos {
 .video:nth-child(odd) {
   margin: 0 10px 10px 0;
 }
+.profile-image {
+  padding:1px;
+  border: 1px solid #FF7F50;
+}
 .profile {
   i {
     color: #9d8e87;
     margin-left: 1em;
   }
-  .follow-button {
-    font-size: 70%;
-    position: relative;
-    display: inline-block;
-    padding: 0.25em 0.25em;
-    text-decoration: none;
-    border:none;
-    background: #9d8e87;
-    color: white;
-    transition: .4s;
-    i {
+  .follow-buttons {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .follow-button {
+      font-size: 100%;
+      position: relative;
+      display: inline-block;
+      padding: 0.3em 0.3em;
+      text-decoration: none;
+      border: none;
+      border-radius: 3px;
+      background: #9d8e87;
       color: white;
-      margin: 0;
+      transition: .4s;
+      i {
+        color: white;
+        margin: 0;
+      }
     }
-  }
-  .follow-button:hover {
-    color: #9d8e87;
-    background-color:#ECECEC;
-    i {
+    .follow-button:hover {
       color: #9d8e87;
-      margin: 0;
+      background-color:#ECECEC;
+      i {
+        color: #9d8e87;
+        margin: 0;
+      }
     }
   }
 }

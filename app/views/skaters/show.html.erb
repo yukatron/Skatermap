@@ -1,65 +1,53 @@
-<div class="body">
-	<div class="container">
+
+	<div class="container" style="height: auto;">
 		<div class="row justify-content-center">
-			<div class="profile-image col-2">
-				<%= attachment_image_tag @skater, :profile_image, class:"profile-image rounded-circle float-right", size: '100x100', fallback: "no_image.svg" %>
+			<div class="col-2">
+				<%= attachment_image_tag @skater, :profile_image, class:"profile-image img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
 			</div>
-			<div class="profile col-5">
-				<div class="profile-title clearfix">
-					<h5 class="float-left pl-3 inline-text"><%= @skater.name %></h5>
-					<% if current_skater == @skater %>
-						<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
-					<% else %>
-	  					<% if current_skater.following?(@skater) %>
-		  					<%= form_for(@skater, url: unfollow_path(id: @skater.id), method: :delete) do |f| %>
-		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Unfollow<% end %>
-							<% end %>
-		  				<% else %>
-		    				<%= form_for(@skater, url: follow_path(id: @skater.id), method: :post) do |f| %>
-		   						<%= f.button :type => "submit", class:"follow-button float-right" do %><i class="fa fa-caret-right"></i> Follow<% end %>
-		   					<% end %>
-	  					<% end %>
-	  				<% end %>
-	  			</div>
-	  			<div class="profile-content">
-					<p class="text-right">
-						<%= @skater.followings.count %> following<br/>
-						<%= @skater.followers.count %> follower
-					</p>
+			<div class="col-1"></div>
+			<div class="profile col-5 clearfix">
+				<h5><%= @skater.name %>
+				<% if current_skater == @skater %>
+					<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
+				<% end %></h5>
+		  		<div id="follow_buttons_<%= @skater.id %>">
+					<%= render partial: 'relationships/follow', locals: {skater: @skater} %>
 				</div>
-			</div>
+		  	</div>
 		</div>
 
 		<div class="row justify-content-center">
-			<div class="wrap">
-	      		<ul id="tab-menu" class="clearfix">
-	        		<li><a href="#profile" class="active">PROFILE</a></li>
-	        		<li><a href="#my-videos" class="">VIDEOS</a></li>
-	      		</ul>
+			<div class="col-11">
+				<div class="wrap">
+		      		<ul id="tab-menu" class="clearfix">
+		        		<li><a href="#profile" class="active">PROFILE</a></li>
+		        		<li><a href="#my-videos" class="">VIDEOS</a></li>
+		      		</ul>
 
-	      		<div id="tab-contents" class="clearfix">
-	        		<div id="profile" class="tab">
-	        			<div class="row justify-content-center">
-	        				<h4 class="col-10">BIOGRAPHY</h4>
-	        			</div>
-	        			<div class="row justify-content-center">
-		        			<div class="content col-9">
-								<p><%= simple_format(@skater.biography) %></p>
-								<% if @skater.biography.blank? %>
-								<p class="text-center">何も書かれていません</p>
-								<% end %>
+		      		<div id="tab-contents" class="clearfix">
+		        		<div id="profile" class="tab">
+		        			<div class="row justify-content-center">
+		        				<h4 class="col-10">BIOGRAPHY</h4>
+		        			</div>
+		        			<div class="row justify-content-center">
+			        			<div class="content col-9">
+									<p><%= simple_format(@skater.biography) %></p>
+									<% if @skater.biography.blank? %>
+									<p class="text-center">何も書かれていません</p>
+									<% end %>
+								</div>
 							</div>
-						</div>
-	        		</div>
+		        		</div>
 
-	        		<div id="my-videos" class="tab">
-	        			<div class="row">
-	        				<%= render "posts/videos", posts: @posts %>
-	        				<%= paginate @posts %>
-	        			</div>
-	        		</div>
-	        	</div>
-	        </div>
+		        		<div id="my-videos" class="tab">
+		        			<div class="row">
+		        				<%= render "posts/videos", posts: @posts %>
+		        				<%= paginate @posts %>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </div>
+		    </div>
 		</div>
 	</div>
-</div>
+

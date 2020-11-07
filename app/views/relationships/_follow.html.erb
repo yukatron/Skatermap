@@ -1,0 +1,29 @@
+<div class="follow-buttons button-group">
+	<a class="btn btn-outline-info" href="#" role="button" id="followingsButton" data-toggle="dropdown" area-haspopup="true" area-expanded="false"><%= skater.followings.count %> following</a>
+	<div class="dropdown-menu" area-labelledby="followingsButton">
+		<% skater.followings.each do |following| %>
+			<%= link_to skater_path(following), class:"dropdown-item" do %>
+                <%= attachment_image_tag following, :profile_image, class:"profile-image rounded-circle ml-3", size: '30x30', fallback: "no_image.svg" %><%= following.name %>
+            <% end %>
+        <% end %>
+    </div>
+
+	<a class="btn btn-outline-info" href="#" role="button" id="followersButton" data-toggle="dropdown" area-haspopup="true" area-expanded="false"><%= skater.followers.count %> follower</a>
+	<div class="dropdown-menu" area-labelledby="followersButton">
+		<% skater.followers.each do |follower| %>
+		<%= link_to skater_path(follower), class:"dropdown-item" do %>
+                <%= attachment_image_tag follower, :profile_image, class:"profile-image rounded-circle ml-3", size: '30x30', fallback: "no_image.svg" %><%= follower.name %>
+            <% end %>
+        <% end %>
+	</div>
+
+		<% unless current_skater == @skater %>
+			<% if current_skater.following?(skater) %>
+				<%= link_to unfollow_path(skater.id), method: :delete, remote: true, class:"follow-button btn" do %><i class="fa fa-caret-right"></i> Unfollow<% end %>
+			<% else %>
+				<%= link_to follow_path(skater.id), method: :post, remote: true, class:"follow-button btn" do %><i class="fa fa-caret-right"></i> Follow<% end %>
+			<% end %>
+		<% end %>
+
+</div>
+
