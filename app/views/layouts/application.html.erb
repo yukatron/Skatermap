@@ -68,17 +68,8 @@
 
               <% if skater_signed_in? %>
 
-              <li class="menu-item nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
+              <li class="nav-item"><%= link_to new_post_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> 動画を投稿する<% end %></li>
 
-
-              <li class="nav-item ml-3">
-                <%= link_to skater_followings_path(current_skater.id), class:"navlink nav-link" do %>Following<% end %>
-                <% current_skater.followings.each do |following| %>
-                  <%= link_to skater_path(following), class:"navlink nav-link" do %>
-                    <%= attachment_image_tag following, :profile_image, class:"profile-image rounded-circle ml-3", size: '30x30', fallback: "no_image.svg" %><%= following.name %>
-                  <% end %>
-                <% end %>
-              </li>
               <% end %>
             </ul>
           </div>

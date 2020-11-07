@@ -77,8 +77,19 @@ section .videos {
   .follow-buttons {
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    .dropdown {
+      margin-right: 2em;
+      .follow-link {
+        color: #000;
+        text-decoration: none;
+        &:hover {
+          color: #000;
+          text-decoration: none;
+        }
+      }
+    }
     .follow-button {
       font-size: 100%;
       position: relative;

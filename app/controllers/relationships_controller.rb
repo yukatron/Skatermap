@@ -27,6 +27,6 @@ class RelationshipsController < ApplicationController
 
 	private
 	def set_skater
-		@skater = Skater.find(params[:id])
+		@skater = Skater.find_by(name: params[:name])
 	end
 end

@@ -10,7 +10,7 @@
 				<% if current_skater == @skater %>
 					<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
 				<% end %></h5>
-		  		<div id="follow_buttons_<%= @skater.id %>">
+		  		<div id="follow_buttons_<%= @skater.id %>" class="follow-buttons">
 					<%= render partial: 'relationships/follow', locals: {skater: @skater} %>
 				</div>
 		  	</div>
