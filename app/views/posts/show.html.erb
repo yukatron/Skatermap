@@ -1,83 +1,81 @@
-
-	<div class="container" style="height: auto;">
-		<p class="notice"><%= notice %></p>
-		<div class="row justify-content-center">
-			<div class="col-8">
-				<div class="embed-responsive embed-responsive-16by9">
-					<% if @post.video.attached? %>
-						<%= video_tag rails_blob_path(@post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
-					<% end %>
-				</div>
-				<div class="row mt-3">
-					<div class="col-2">
-						<%= link_to skater_path(@post.skater) do %>
-					    	<%= attachment_image_tag @post.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
-						<% end %>
-					</div>
-					<div class="col-10 clearfix m-auto">
-						<h4 class="float-left"><%= @post.title %><br/>
-							<small><%= @post.skater.name %></small></h4>
-
-							<div id="favorite_buttons_<%= @post.title %>" class="float-right">
-								<%= render partial: 'favorites/favorite', locals: {post: @post} %>
-							</div>
-					</div>
-
-					<% if @post.park_id.present? %>
-						<p class="col-12 text-right">@ <%= link_to park_path(@post.park), class:"park-link" do %><%= @post.park.name %><% end %></p>
-					<% end %>
-
-				</div>
-				<div class="row overflow-auto ml-2 clearfix">
-					<p class="lead col-12 float-left"><%= simple_format(@post.caption) %></p>
-				</div>
+<div class="container pt-5" style="height: auto;">
+	<p class="notice"><%= notice %></p>
+	<div class="row justify-content-center mt-0">
+		<div class="col-8">
+			<div class="embed-responsive embed-responsive-16by9">
+				<% if @post.video.attached? %>
+					<%= video_tag rails_blob_path(@post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
+				<% end %>
 			</div>
-			<div class="comments col-md-4 col-12">
-				<h5>コメント</h5>
-				<div class="form-horizontal clearfix">
-					<%= form_for [@post, @comment] do |f| %>
-		  				<div class="form-group">
-		      				<%= f.text_area :comment, rows:'3', class:"form-control pb-0", placeholder:"コメント入力" %>
-		  				</div>
-		  				<div class="actions">
-		  					<%= f.button :type => "submit", class:"btn btn-outline-info btn-sm float-right mt-0" do %><i class="far fa-paper-plane"></i><% end %>
-		  				</div>
+			<div class="row mt-3">
+				<div class="col-2">
+					<%= link_to skater_path(@post.skater) do %>
+				    	<%= attachment_image_tag @post.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
 					<% end %>
 				</div>
+				<div class="col-10 clearfix m-auto">
+					<h4 class="float-left"><%= @post.title %><br/>
+						<small><%= @post.skater.name %></small></h4>
 
-				<div class="comments-content overflow-auto mt-1">
-					<% @comments.each do |comment| %>
-						<div class="row m-0 mt-2">
-							<div class="col-2 pl-0">
-								<%= link_to skater_path(comment.skater) do %>
-				    				<%= attachment_image_tag comment.skater, :profile_image, class:"profile-image img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
-				    			<% end %>
-				    		</div>
-
-				    		<div class="post col-10 pr-0 clearfix">
-				    			<span class="text-body float-right">by <%= comment.skater.name %></span>
-				    		</div>
-
-							<div class="col-12 pr-0 clearfix">
-								<span class="text-body"><%= simple_format(comment.comment) %></span>
-
-								<% if comment.skater == current_skater %>
-									<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
-								<% end %>
-							</div>
+						<div id="favorite_buttons_<%= @post.title %>" class="float-right">
+							<%= render partial: 'favorites/favorite', locals: {post: @post} %>
 						</div>
-					<% end %>
 				</div>
+				<% if @post.park_id.present? %>
+					<p class="col-12 text-right">@ <%= link_to park_path(@post.park), class:"park-link" do %><%= @post.park.name %><% end %></p>
+				<% end %>
 
-				<% if @comments.blank? %>
-					<p>コメントはありません</p>
+			</div>
+			<div class="row overflow-auto ml-2 clearfix">
+				<p class="lead col-12 float-left"><%= simple_format(@post.caption) %></p>
+			</div>
+		</div>
+		<div class="comments col-md-4 col-12">
+			<h5>コメント</h5>
+			<div class="form-horizontal clearfix">
+				<%= form_for [@post, @comment] do |f| %>
+	  				<div class="form-group">
+	      				<%= f.text_area :comment, rows:'3', class:"form-control pb-0", placeholder:"コメント入力" %>
+	  				</div>
+	  				<div class="actions">
+	  					<%= f.button :type => "submit", class:"btn btn-outline-info btn-sm float-right mt-0" do %><i class="far fa-paper-plane"></i><% end %>
+	  				</div>
 				<% end %>
 			</div>
 
+			<div class="comments-content overflow-auto mt-1">
+				<% @comments.each do |comment| %>
+					<div class="row m-0 mt-2">
+						<div class="col-2 pl-0">
+							<%= link_to skater_path(comment.skater) do %>
+			    				<%= attachment_image_tag comment.skater, :profile_image, class:"profile-image img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
+			    			<% end %>
+			    		</div>
 
-			<div class="index col-12 text-left">
-				<h5><%= @post.skater.name %>さんの動画</h5>
-				<%= render "posts/videos", posts: @posts %>
-				<%= paginate @posts %>
+			    		<div class="post col-10 pr-0 clearfix">
+			    			<span class="text-body float-right">by <%= comment.skater.name %></span>
+			    		</div>
+						<div class="col-12 pr-0 clearfix">
+							<span class="text-body"><%= simple_format(comment.comment) %></span>
+
+							<% if comment.skater == current_skater %>
+								<%= link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-sm float-right mt-0" %>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
 			</div>
+
+			<% if @comments.blank? %>
+				<p>コメントはありません</p>
+			<% end %>
 		</div>
+
+
+		<div class="index col-12 text-left">
+			<h5><%= @post.skater.name %>さんの動画</h5>
+			<%= render "posts/videos", posts: @posts %>
+			<%= paginate @posts %>
+		</div>
+	</div>
+</div>

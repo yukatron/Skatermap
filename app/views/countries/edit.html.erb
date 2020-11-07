@@ -1,9 +1,8 @@
-
-	<div class="container" style="height: auto;">
-		<div class="row">
-			<div class="form-header">
-				<h4 class="form-header-title text-left"><%= @country.name %>情報編集</h4>
-			</div>
+<div class="container pt-5" style="height: auto;">
+	<div class="row mt-0">
+		<div class="form-header">
+			<h4 class="form-header-title text-left"><%= @country.name %>情報編集</h4>
 		</div>
-		<%= render "form", country: @country %>
 	</div>
+	<%= render "form", country: @country %>
+</div>

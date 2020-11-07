@@ -1,53 +1,51 @@
-
-	<div class="container" style="height: auto;">
-		<div class="row justify-content-center">
-			<div class="col-2">
-				<%= attachment_image_tag @skater, :profile_image, class:"profile-image img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
-			</div>
-			<div class="col-1"></div>
-			<div class="profile col-5 clearfix">
-				<h5><%= @skater.name %>
-				<% if current_skater == @skater %>
-					<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
-				<% end %></h5>
-		  		<div id="follow_buttons_<%= @skater.id %>" class="follow-buttons">
-					<%= render partial: 'relationships/follow', locals: {skater: @skater} %>
-				</div>
-		  	</div>
+<div class="container pt-5" style="height: auto;">
+	<div class="row justify-content-center mt-0">
+		<div class="col-2">
+			<%= attachment_image_tag @skater, :profile_image, class:"profile-image img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
 		</div>
+		<div class="col-1"></div>
+		<div class="profile col-5 clearfix">
+			<h5><%= @skater.name %>
+			<% if current_skater == @skater %>
+				<%= link_to edit_skater_path(@skater)do %><i class="far fa-edit float-right"></i><% end %>
+			<% end %></h5>
+		  	<div id="follow_buttons_<%= @skater.id %>" class="follow-buttons">
+				<%= render partial: 'relationships/follow', locals: {skater: @skater} %>
+			</div>
+		</div>
+	</div>
 
-		<div class="row justify-content-center">
-			<div class="col-11">
-				<div class="wrap">
-		      		<ul id="tab-menu" class="clearfix">
-		        		<li><a href="#profile" class="active">PROFILE</a></li>
-		        		<li><a href="#my-videos" class="">VIDEOS</a></li>
-		      		</ul>
+	<div class="row justify-content-center">
+		<div class="col-11">
+			<div class="wrap">
+	      		<ul id="tab-menu" class="clearfix">
+		        	<li><a href="#profile" class="">PROFILE</a></li>
+		        	<li><a href="#my-videos" class="active">VIDEOS</a></li>
+		      	</ul>
 
-		      		<div id="tab-contents" class="clearfix">
-		        		<div id="profile" class="tab">
-		        			<div class="row justify-content-center">
-		        				<h4 class="col-10">BIOGRAPHY</h4>
-		        			</div>
-		        			<div class="row justify-content-center">
-			        			<div class="content col-9">
-									<p><%= simple_format(@skater.biography) %></p>
-									<% if @skater.biography.blank? %>
-									<p class="text-center">何も書かれていません</p>
-									<% end %>
-								</div>
+		      	<div id="tab-contents" class="clearfix">
+		       		<div id="profile" class="tab">
+		       			<div class="row justify-content-center">
+		       				<h4 class="col-10">BIOGRAPHY</h4>
+		       			</div>
+		       			<div class="row justify-content-center">
+		        			<div class="content col-9">
+								<p><%= simple_format(@skater.biography) %></p>
+								<% if @skater.biography.blank? %>
+								<p class="text-center">何も書かれていません</p>
+								<% end %>
 							</div>
-		        		</div>
+						</div>
+		       		</div>
 
-		        		<div id="my-videos" class="tab">
-		        			<div class="row">
-		        				<%= render "posts/videos", posts: @posts %>
-		        				<%= paginate @posts %>
-		        			</div>
-		        		</div>
-		        	</div>
+		        	<div id="my-videos" class="tab">
+		        		<div class="row m-0">
+			       			<%= render "posts/videos", posts: @posts %>
+			       		</div>
+		       		</div>
 		        </div>
 		    </div>
 		</div>
 	</div>
+</div>
 

@@ -1,9 +1,7 @@
 $(document).on('turbolinks:load', function() {
   $('.jscroll').jscroll({
-  	contentSelector: '.comments-content',
-  	nextSelector: '.next',
+  	contentSelector: '#my-videos .row',
+  	nextSelector: 'a.next',
   	loadingHtml: 'loading...'
-  	padding: '20',
-  	autoTrigger: true,
   });
 });

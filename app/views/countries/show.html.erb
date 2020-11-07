@@ -1,5 +1,5 @@
-<div class="container clearfix" style="height: auto;">
-	<div class="row">
+<div class="container clearfix pt-5" style="height: auto;">
+	<div class="row mt-0">
 		<div class="country-name col-12">
 			<h3><%= @country.name %>
 			  <%= link_to 'Delete', country_path(@country), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-delete" %><%= link_to 'Edit', edit_country_path(@country), class:"btn" %></h3>

@@ -1,4 +1,4 @@
-<div class="video-box">
+<div class="video-box col-12">
 	<% posts.each do |post| %>
 		<% if post.skater.is_deleted == true %>
 		<% else %>
@@ -12,7 +12,7 @@
 				    <%= attachment_image_tag post.skater, :profile_image, class:"img-fluid rounded-circle", alt: "Responsive image", fallback: "no_image.svg" %>
 					<% end %>
 				</div>
-				<div class="post col-7 p-0 clearfix">
+				<div class="post col-7 clearfix">
 					<span class="d-inline-block text-truncate float-left"><%= link_to post_path(post) do %><%= post.title %><% end %><br><%= post.skater.name %></span>
 				</div>
 

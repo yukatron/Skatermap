@@ -1,42 +1,41 @@
+<div class="container pt-5" style="height: auto;">
+	<div class="row clearfix mt-0">
+		<% if @search_params.blank? %>
+			<h4 class="test-inline col-5 float-left">スケートパーク</h4>
+		<% else %>
+			<h4 class="test-inline col-5 float-left">"<%= @search_params[:name] %>"の検索結果  (<%= @parks.count %>件)</h4>
+		<% end %>
 
-	<div class="container" style="height: auto;">
-		<div class="row clearfix">
-			<% if @search_params.blank? %>
-				<h4 class="test-inline col-5 float-left">スケートパーク</h4>
-			<% else %>
-				<h4 class="test-inline col-5 float-left">"<%= @search_params[:name] %>"の検索結果  (<%= @parks.count %>件)</h4>
-			<% end %>
-
-            <div class="search-form form-inline col-7 justify-content-end clearfix">
-            	<%= form_with(scope: :search, url: parks_path, method: :get, local: true) do |f| %>
-            		<div class="form-group">
-            		<%= f.text_field :name, value: @search_params[:name], class:"search form-control mr-sm-2", placeholder:"Search by name" %>
-            		<%= f.button :type => "submit(t('helpers.submit.search'))", class:"btn my-2 my-sm-0" do %><i class="fas fa-search"></i><% end %>
-            		</div>
-            	<% end %>
-            </div>
+        <div class="search-form form-inline col-7 justify-content-end clearfix">
+           	<%= form_with(scope: :search, url: parks_path, method: :get, local: true) do |f| %>
+        		<div class="form-group">
+           		<%= f.text_field :name, value: @search_params[:name], class:"search form-control mr-sm-2", placeholder:"Search by name" %>
+            	<%= f.button :type => "submit(t('helpers.submit.search'))", class:"btn my-2 my-sm-0" do %><i class="fas fa-search"></i><% end %>
+            	</div>
+            <% end %>
+        </div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="add-country col-10 clearfix">
+			<%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> Add new...<% end %>
 		</div>
-		<div class="row justify-content-center">
-			<div class="add-country col-10 clearfix">
-				<%= link_to new_park_path, class:"navlink nav-link" do %><i class="far fa-plus-square"></i> Add new...<% end %>
-			</div>
-			<table class="table table-hover col-10">
-				<tbody>
-					<% @parks.each do |park| %>
-		                <tr>
-			                <td><% if park.images.count > 0 %>
-									<%= image_tag park.images.first.variant(resize: "100x100").processed, class:"image" %>
-								<% end %>
-			                </td>
-			                <td><%= link_to park_path(park), class:"park-link" do %>
-			                	<%= park.name %>
-			                	<% end %>
-			                </td>
-			            </tr>
-		            <% end %>
-		        </tbody>
-		    </table>
-		    <%= paginate @parks %>
-		</div>
-    </div>
+		<table class="table table-hover col-10">
+			<tbody>
+				<% @parks.each do |park| %>
+	                <tr>
+		                <td><% if park.images.count > 0 %>
+								<%= image_tag park.images.first.variant(resize: "100x100").processed, class:"image" %>
+							<% end %>
+		                </td>
+		                <td><%= link_to park_path(park), class:"park-link" do %>
+		                	<%= park.name %>
+		                	<% end %>
+		                </td>
+		            </tr>
+	            <% end %>
+	        </tbody>
+	    </table>
+	    <%= paginate @parks %>
+	</div>
+</div>
 

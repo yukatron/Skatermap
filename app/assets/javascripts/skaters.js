@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function () {
 
-	$('#tab-contents .tab[id != "profile"]').hide();
+	$('#tab-contents .tab[id != "my-videos"]').hide();
 
 	$('#tab-menu a').on('click', function() {
 	  $("#tab-contents .tab").hide();

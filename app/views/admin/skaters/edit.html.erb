@@ -1,45 +1,44 @@
+<div class="container pt-5" style="height: auto;">
+	<div class="form-header">
+		<h4 class="form-header-title text-left"><%= @skater.name %>のアカウント</h4>
+	</div>
+	<div class="row justify-content-center">
+		<div class="form-horizontal col-9">
+			<%= form_with model: @skater, url: admin_skater_path, method: :patch, local: true do |f| %>
+				<%= render "layouts/error_messages", hoge: @skater %>
 
-	<div class="container" style="height: auto;">
-		<div class="form-header">
-			<h4 class="form-header-title text-left"><%= @skater.name %>のアカウント</h4>
-		</div>
-		<div class="row justify-content-center">
-			<div class="form-horizontal col-9">
-				<%= form_with model: @skater, url: admin_skater_path, method: :patch, local: true do |f| %>
-					<%= render "layouts/error_messages", hoge: @skater %>
+				<div class="form-group">
+					<%= f.label :profile_image%>
+					<%= f.attachment_field :profile_image %>
+				</div>
 
-					<div class="form-group">
-						<%= f.label :profile_image%>
-						<%= f.attachment_field :profile_image %>
-					</div>
+				<div class="form-group">
+					<% if @skater.profile_image.present? %>
+					<p> 削除する場合はチェックしてください</p>
+						<%= f.check_box :remove_profile_image %>
+						<%= attachment_image_tag @skater, :profile_image, size: "100x100" %>
+					<% end %>
+				</div>
 
-					<div class="form-group">
-						<% if @skater.profile_image.present? %>
-						<p> 削除する場合はチェックしてください</p>
-							<%= f.check_box :remove_profile_image %>
-							<%= attachment_image_tag @skater, :profile_image, size: "100x100" %>
-						<% end %>
-					</div>
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class:"form-control" %>
+				</div>
 
-					<div class="form-group">
-						<%= f.label :name %>
-						<%= f.text_field :name, class:"form-control" %>
-					</div>
+				<div class="form-group">
+					<%= f.label :biography %>
+					<%= f.text_area :biography, class:"form-control", rows:'10' %>
+				</div>
 
-					<div class="form-group">
-						<%= f.label :biography %>
-						<%= f.text_area :biography, class:"form-control", rows:'10' %>
-					</div>
+				<div class="form-group">
+					<label for="is_deleted">アカウント状態</label>
+					<%= f.select :is_deleted, [["既存", false], ["削除", true]],:prompt => false %>
+				</div>
 
-					<div class="form-group">
-						<label for="is_deleted">アカウント状態</label>
-						<%= f.select :is_deleted, [["既存", false], ["削除", true]],:prompt => false %>
-					</div>
-
-					<div class="actions">
-						<%= f.submit "アカウント編集", class:"btn btn-info col-3 float-right" %>
-					</div>
-				<% end %>
-			</div>
+				<div class="actions">
+					<%= f.submit "アカウント編集", class:"btn btn-info col-3 float-right" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
+</div>

@@ -1,49 +1,48 @@
-
-	<div class="container" style="height: auto;">
-		<p class="notice"><%= notice %></p>
-		<div class="row">
-			<h3 class="page-header">VIDEOS</h3>
-		</div>
-		<div class="row justify-content-center">
-			<div class="page-content col-12 mt-2">
-				<table class="table table-hover">
-					<thead>
-						<tr class="info">
-							<th></th>
-							<th>動画</th>
-							<th>投稿者・タイトル</th>
-							<th>コメント</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @posts.each do |post| %>
-						<tr>
-							<td><%= link_to "削除", admin_post_path(post.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info" %></td>
-							<td class="video-column">
-								<div class="embed-responsive embed-responsive-16by9">
-	    							<%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
-								</div>
-							</td>
-							<td class="title-columm">
-								by <%= post.skater.name %><% if post.skater.is_deleted == true %><span> (退会済み)</span><% end %><br/>
-								『<%= post.title %>』
-							</td>
-							<td>
-								<ul>
-								<% post.comments.each do |comment| %>
-								<li>
-								<p><%= comment.skater.name %> ... <%= comment.comment %>
-								<span class="text-right"><%= link_to "削除", admin_post_comment_path(post.id, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info float-right" %></span></p>
-								</li>
-								<% end %>
-								</ul>
-							</td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-				<%= paginate @posts %>
-			</div>
+<div class="container pt-5" style="height: auto;">
+	<p class="notice"><%= notice %></p>
+	<div class="row mt-0">
+		<h3 class="page-header">VIDEOS</h3>
+	</div>
+	<div class="row justify-content-center">
+		<div class="page-content col-12 mt-2">
+			<table class="table table-hover">
+				<thead>
+					<tr class="info">
+						<th></th>
+						<th>動画</th>
+						<th>投稿者・タイトル</th>
+						<th>コメント</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @posts.each do |post| %>
+					<tr>
+						<td><%= link_to "削除", admin_post_path(post.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info" %></td>
+						<td class="video-column">
+							<div class="embed-responsive embed-responsive-16by9">
+	    						<%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
+							</div>
+						</td>
+						<td class="title-columm">
+							by <%= post.skater.name %><% if post.skater.is_deleted == true %><span> (退会済み)</span><% end %><br/>
+							『<%= post.title %>』
+						</td>
+						<td>
+							<ul>
+							<% post.comments.each do |comment| %>
+							<li>
+							<p><%= comment.skater.name %> ... <%= comment.comment %>
+							<span class="text-right"><%= link_to "削除", admin_post_comment_path(post.id, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info float-right" %></span></p>
+							</li>
+							<% end %>
+							</ul>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= paginate @posts %>
 		</div>
 	</div>
+</div>
 

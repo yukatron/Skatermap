@@ -5,7 +5,7 @@ class SkatersController < ApplicationController
 
   def show
     @skater = Skater.find_by(name: params[:name])
-  	@posts = @skater.posts.page(params[:page]).reverse_order
+  	@posts = @skater.posts
     if @skater.is_deleted == true
       flash[:notice]="退会済みアカウントの詳細はご覧になれません"
       redirect_to skaters_path
