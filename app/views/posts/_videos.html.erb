@@ -1,8 +1,8 @@
-<div class="video-box col-12">
+<div class="video-box">
 	<% posts.each do |post| %>
 		<% if post.skater.is_deleted == true %>
 		<% else %>
-		<div class="post col-6 col-lg-3 mt-3">
+		<div class="post col-3 mt-3">
 			<div class="embed-responsive embed-responsive-16by9">
 			    <%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
 			</div>

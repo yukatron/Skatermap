@@ -14,7 +14,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery.jscroll.min.js
+//= require infinite-scroll.pkgd.min
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
