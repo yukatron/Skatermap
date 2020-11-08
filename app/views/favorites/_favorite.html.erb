@@ -1,0 +1,21 @@
+<% if @post.skater_id == current_skater.id %>
+	<span class="mr-3">
+		<%= link_to 'Edit', edit_post_path(@post), class:"btn btn-white btn-sm" %>
+	</span>
+<% end %>
+
+<span class="mr-1">
+	<i class="far fa-comments"></i><%= @post.comments.count %>
+</span>
+
+<% if post.favorited_by?(current_skater) %>
+	<%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+		<span class="favorite-button"><i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		<%= post.favorites.count %></span>
+	<% end %>
+<% else %>
+	<%= link_to post_favorites_path(@post), method: :post, remote: true do %>
+		<span class="favorite-button"><i class="fa fa-heart-o" aria-hidden="true"></i>
+		<%= post.favorites.count %></span>
+	<% end %>
+<% end %>

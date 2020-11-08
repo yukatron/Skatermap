@@ -1,40 +1,39 @@
-<div class="body">
-	<div class="container">
-		<p class="notice"><%= notice %></p>
-			<div id="slide">
-				<div class="image1">
-					<p>Photo by <a href="https://unsplash.com/@harrisonkugler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Harrison Kugler</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-				</div>
-				<div class="image2">
-					<p>Photo by <a href="https://unsplash.com/@jordanfmcqueen?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jordan McQueen</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-				</div>
-				<div class="image3">
-					<p>Photo by <a href="https://unsplash.com/@jack_henry?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jack Irwin</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-				</div>
-				<div class="image4">
-					<p>Photo by <a href="https://unsplash.com/@kukuhhimawans?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kukuh Himawan Samudro</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-				</div>
+<div class="container pt-1" style="height: auto;">
+	<p class="notice"><%= notice %></p>
+		<div id="slide">
+			<div class="image1">
+				<p>Photo by <a href="https://unsplash.com/@harrisonkugler?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Harrison Kugler</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 			</div>
-			<div class="row">
-				<div class="headline col-12">
-					<h4>PARKS   <%= link_to parks_path do %><small class="link">more >></small><% end %></h4>
-				</div>
-				<div class="parks col-10">
-					<ul class="list-unstyled">
-						<% @parks.each do |park| %>
-							<p><li class="park-list-item"><i class="far fa-hand-point-right"></i>   <%= park.name %> @<%= park.address %> in <%= park.country.name %></li></p>
-						<% end %>
-					</ul>
-				</div>
+			<div class="image2">
+				<p>Photo by <a href="https://unsplash.com/@jordanfmcqueen?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jordan McQueen</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 			</div>
-			<div class="row">
-				<div class="headline col-12 mb-0">
-					<h4>VIDEOS   <%= link_to posts_path do %><small class="link">more >></small><% end %></h4>
-				</div>
-				<div class="videos col-12 p-0">
-					<%= render "posts/videos", posts: @posts %>
-				</div>
+			<div class="image3">
+				<p>Photo by <a href="https://unsplash.com/@jack_henry?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jack Irwin</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 			</div>
-	</div>
+			<div class="image4">
+				<p>Photo by <a href="https://unsplash.com/@kukuhhimawans?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kukuh Himawan Samudro</a> on <a href="https://unsplash.com/collections/37556923/my-first-collection/1d56ba1997cd122e1c3a68ec8c429e53?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="headline col-12">
+				<h4>PARKS   <%= link_to parks_path do %><small class="link">more >></small><% end %></h4>
+			</div>
+			<div class="parks col-10">
+				<ul class="list-unstyled">
+					<% @parks.each do |park| %>
+						<p><li class="park-list-item"><i class="far fa-hand-point-right"></i>   <%= park.name %> @<%= park.address %> in <%= park.country.name %></li></p>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="headline col-12 mb-0">
+				<h4>VIDEOS   <%= link_to posts_path do %><small class="link">more >></small><% end %></h4>
+			</div>
+			<div class="videos col-12 p-0">
+				<%= render "posts/videos", posts: @posts %>
+			</div>
+		</div>
 </div>
+
 

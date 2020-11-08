@@ -1,5 +1,5 @@
-<div class="container clearfix" style="height: auto;">
-	<div class="row">
+<div class="container clearfix pt-5" style="height: auto;">
+	<div class="row mt-0">
 		<div class="park-name col-12">
 			<h2><%= @park.name %>
 			  <small class="text-muted">in <%= @park.country.name %></small><%= link_to 'Delete', park_path(@park), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-delete" %><%= link_to 'Edit', edit_park_path(@park), class:"btn" %></h2>
@@ -57,8 +57,20 @@
 	</div>
 
 	<div class="row justify-content-center">
-			<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
-			<%= render "posts/videos", posts: @posts %>
+		<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
+		<div id="videos" class="col-12">
+			<%= render partial: 'posts/videos', locals: {posts: @posts} %>
 		</div>
+		<% unless @posts.count < 5 %>
+			<div class="page-load-status">
+				<div class="infinite-scroll-request">
+					loading... <br>
+					<%= paginate @posts %>
+				</div>
+				<p class="infinite-scroll-last">
+					end of contents
+				</p>
+			</div>
+		<% end %>
 	</div>
 </div>

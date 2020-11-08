@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 		skater = Skater.find_by(id: @post.skater_id)
 		@posts = skater.posts.page(params[:page]).reverse_order
 		@comment = Comment.new
+		@comments = @post.comments
 	end
 
 	def new

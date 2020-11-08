@@ -43,7 +43,7 @@
 }
 
 #tab-contents .tab {
-  padding: 10px;
+  padding: 5px;
   background: #fff;
   border: 2px solid #9d8e87;
   border-top: none;
@@ -53,44 +53,55 @@
   color:#000;
   line-height: 2.5;
 }
-section .videos {
-	width: 80%;
-	margin: 0 auto;
-}
-.video {
-	float: left;
-	display: block;
-	border: none;
-}
-.video:nth-child(odd) {
-  margin: 0 10px 10px 0;
+
+.profile-image {
+  padding:1px;
+  border: 1px solid #FF7F50;
 }
 .profile {
   i {
     color: #9d8e87;
     margin-left: 1em;
   }
-  .follow-button {
-    font-size: 70%;
-    position: relative;
-    display: inline-block;
-    padding: 0.25em 0.25em;
-    text-decoration: none;
-    border:none;
-    background: #9d8e87;
-    color: white;
-    transition: .4s;
-    i {
-      color: white;
-      margin: 0;
+  .follow-buttons {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .dropdown {
+      margin-right: 2em;
+      .follow-link {
+        color: #000;
+        text-decoration: none;
+        &:hover {
+          color: #000;
+          text-decoration: none;
+        }
+      }
     }
-  }
-  .follow-button:hover {
-    color: #9d8e87;
-    background-color:#ECECEC;
-    i {
+    .follow-button {
+      font-size: 100%;
+      position: relative;
+      display: inline-block;
+      padding: 0.3em 0.3em;
+      text-decoration: none;
+      border: none;
+      border-radius: 3px;
+      background: #9d8e87;
+      color: white;
+      transition: .4s;
+      i {
+        color: white;
+        margin: 0;
+      }
+    }
+    .follow-button:hover {
       color: #9d8e87;
-      margin: 0;
+      background-color:#ECECEC;
+      i {
+        color: #9d8e87;
+        margin: 0;
+      }
     }
   }
 }

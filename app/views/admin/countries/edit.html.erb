@@ -1,28 +1,25 @@
-<div class="body">
-	<div class="container">
-		<div class="row">
-			<div class="form-header">
-				<h4 class="form-header-title text-left"><%= @country.name %>情報編集</h4>
-			</div>
+<div class="container pt-5" style="height: auto;">
+	<div class="row mt-0">
+		<div class="form-header">
+			<h4 class="form-header-title text-left"><%= @country.name %>情報編集</h4>
 		</div>
-		<div class="row justify-content-center">
-			<div class="form col-10">
-				<%= form_for(@country, url: admin_country_path(@country.id), method: :patch) do |f| %>
-					<%= render "layouts/error_messages", hoge: @country %>
-					<div class="form-group">
-						<%= f.label :name %>
-						<%= f.text_field :name, class:"form-control" %>
-					</div>
-					<div class="form-group">
-						<%= f.label :description %>
-						<%= f.text_area :description, rows:'10', class:"form-control" %>
-					</div>
-
-					<div class="actions">
-						<%= f.submit "Submit", class:"btn btn-outline-info" %>
-					</div>
-				<% end %>
-			</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="form col-10">
+			<%= form_for(@country, url: admin_country_path(@country.id), method: :patch) do |f| %>
+				<%= render "layouts/error_messages", hoge: @country %>
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class:"form-control" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :description %>
+					<%= f.text_area :description, rows:'10', class:"form-control" %>
+				</div>
+				<div class="actions">
+					<%= f.submit "Submit", class:"btn btn-outline-info" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

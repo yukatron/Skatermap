@@ -1,11 +1,9 @@
-<div class="body">
-	<div class="container">
-		<div class="form-header">
-			<h3 class="form-header-title text-left">投稿編集画面</h3><%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger col-3 float-right" %>
-		</div>
-		<div class="row justify-content-center">
+<div class="container pt-5" style="height: auto;">
+	<div class="form-header mt-0">
+		<h3 class="form-header-title text-left">投稿編集画面</h3><%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger col-3 float-right" %>
+	</div>
+	<div class="row justify-content-center">
 
-			<%= render "form", post: @post %>
-		</div>
+		<%= render "form", post: @post %>
 	</div>
 </div>

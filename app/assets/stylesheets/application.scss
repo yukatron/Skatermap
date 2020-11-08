@@ -25,7 +25,19 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+main, header, footer {
+    background-color: #F5F5DC;
+}
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  padding-bottom: 10px;
+  background-color: rgba(255, 255, 255, 1);
+}
 .menu-item {
   border-bottom: 1px dotted #9d8e87;
   icon {
@@ -121,4 +133,7 @@
 .navlink {
   text-decoration:none;
   color: #000;
+}
+.page-load-status {
+  margin: 0 auto;
 }

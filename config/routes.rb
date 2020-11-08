@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     resources :countries, param: :name
 
 
-  	post 'follow/:id' => 'relationships#create', as: :follow
-  	delete 'unfollow/:id' => 'relationships#destroy', as: :unfollow
+  	post 'follow/:name' => 'relationships#create', as: :follow
+  	delete 'unfollow/:name' => 'relationships#destroy', as: :unfollow
 
 	devise_for :admins, skip: :all
 	devise_scope :admin do
