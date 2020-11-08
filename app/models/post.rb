@@ -14,6 +14,7 @@ class Post < ApplicationRecord
     	favorites.where(skater_id: skater.id).exists?
   	end
 
+
   	def to_param
     	return self.title
     	if admin_signed_in?

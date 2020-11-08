@@ -57,8 +57,20 @@
 	</div>
 
 	<div class="row justify-content-center">
-			<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
-			<%= render "posts/videos", posts: @posts %>
+		<div class="header col-12"><h5><%= @park.name %>での動画</h5></div>
+		<div id="videos" class="col-12">
+			<%= render partial: 'posts/videos', locals: {posts: @posts} %>
 		</div>
+		<% unless @posts.count < 5 %>
+			<div class="page-load-status">
+				<div class="infinite-scroll-request">
+					loading... <br>
+					<%= paginate @posts %>
+				</div>
+				<p class="infinite-scroll-last">
+					end of contents
+				</p>
+			</div>
+		<% end %>
 	</div>
 </div>

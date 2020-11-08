@@ -40,7 +40,20 @@
 
 		        	<div id="my-videos" class="tab">
 		        		<div class="row m-0">
-			       			<%= render "posts/videos", posts: @posts %>
+			       			<div id="videos">
+								<%= render partial: 'posts/videos', locals: {posts: @posts} %>
+							</div>
+							<% unless @posts.count < 5 %>
+								<div class="page-load-status">
+									<div class="infinite-scroll-request">
+										loading... <br>
+										<%= paginate @posts %>
+									</div>
+									<p class="infinite-scroll-last">
+										end of contents
+									</p>
+								</div>
+							<% end %>
 			       		</div>
 		       		</div>
 		        </div>

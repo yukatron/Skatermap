@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
 
   def top
-  	@skaters = Skater.all
-  	@parks = Park.all
-  	@posts = Post.all.page(params[:page]).reverse_order.per(4)
+  	@parks = Park.order("created_at DESC").first(5)
+  	@posts = Post.order("updated_at DESC").first(4)
   end
 
   def about
