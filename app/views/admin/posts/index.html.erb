@@ -17,7 +17,7 @@
 				<tbody>
 					<% @posts.each do |post| %>
 					<tr>
-						<td><%= link_to "削除", admin_post_path(post.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info" %></td>
+						<td class="delete-column"><%= link_to "削除", admin_post_path(post.id), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-outline-info" %></td>
 						<td class="video-column">
 							<div class="embed-responsive embed-responsive-16by9">
 	    						<%= video_tag rails_blob_path(post.video, disposition: "attachment"), :controls => true, class:"embed-responsive-item" %>
@@ -27,7 +27,7 @@
 							by <%= post.skater.name %><% if post.skater.is_deleted == true %><span> (退会済み)</span><% end %><br/>
 							『<%= post.title %>』
 						</td>
-						<td>
+						<td class="comment-column">
 							<ul>
 							<% post.comments.each do |comment| %>
 							<li>

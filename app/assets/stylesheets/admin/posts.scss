@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.delete-column {
+	width: 10%;
+}
 .video-column {
 	width: 25%;
 }
 .title-columm {
-	width: 15%;
+	width: 25%;
 }
+.comment-column {
+	width: 40%;
+}
+
 .table li:hover {
 	background-color: lightblue;
 }

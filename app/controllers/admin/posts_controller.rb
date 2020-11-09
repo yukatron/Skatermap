@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
   	if params[:skater_id]
   		@posts = Post.where(skater_id: params[:skater_id]).page(params[:page]).per(12).reverse_order
   	else
-      @posts = Post.page(params[:page]).per(12).reverse_order
+      @posts = Post.page(params[:page]).per(10).reverse_order
     end
   end
 
