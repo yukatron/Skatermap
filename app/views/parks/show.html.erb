@@ -17,7 +17,7 @@
 		<table class="table table-hover col-12">
 			<tbody>
 				<tr>
-					<th class="active" id="address">住所</th>
+					<th class="active">住所</th>
 					<td><%= @park.zip %><br>
 						<%= @park.address %>
 					</td>
@@ -51,7 +51,12 @@
 
 	<div class="row justify-content-center">
 		<div class="header col-12"><h5>地図</h5></div>
-
+		<div class="input-group col-10 mb-3">
+      		<input id="address" type="textbox" value="<%= @park.address %>" class="form-control" aria-describedby="button-addon2">
+      		<div class="input-group-append">
+        		<input type="button" value="地図を表示" id="button-addon2" class="btn btn-outline" onclick="codeAddress()">
+      		</div>
+    	</div>
 		<div id="map-container">
 			<div id="map"></div>
 		</div>

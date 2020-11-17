@@ -3,8 +3,18 @@ let geocoder
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
+  if(document.getElementById('map')){
 
-  inputAddress = document.getElementById('address').value;
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 15
+    });
+  }
+}
+
+function codeAddress(){
+  // 入力を取得
+  let inputAddress = document.getElementById('address').value;
 
   // geocodingしたあとmapを移動
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {

@@ -60,6 +60,7 @@ class ParksController < ApplicationController
 		end
 		@park.country_id = country.id
 
+		binding.pry
 		if @park.update(park_params)
 			flash[:notice]="パーク情報を更新しました"
 			redirect_to park_path(@park)
@@ -76,7 +77,7 @@ class ParksController < ApplicationController
 	private
 
 	def park_params
-		params.require(:park).permit(:name, :address, :zip, :tel, :price, :open_time, :description, images: [])
+		params.require(:park).permit(:name, :address, :longitude, :latitude, :zip, :tel, :price, :open_time, :description, images: [])
 	end
 
 	def park_search_params
