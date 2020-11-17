@@ -35,15 +35,13 @@
 .headline {
 	margin-bottom: 1em;
 	border-bottom: 2px dashed #9d8e87;
-}
-.link {
-  color: lightgrey;
-  text-decoration: none;
-  margin-left: 2em;
-}
-.link:hover {
-  color:lightgrey;
-  text-decoration:none;
+  a {
+    text-decoration: none;
+  }
+  .link {
+    color: lightgrey;
+    margin-left: 2em;
+  }
 }
 
 .post {

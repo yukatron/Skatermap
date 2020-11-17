@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   		resources :comments, only: [:create, :destroy]
   		resource :favorites, only: [:create, :destroy]
   	end
-  	resources :parks, param: :name
+  	resources :parks, param: :name, constraints: { name: /[^\/]+/ }
     resources :countries, param: :name
-
 
   	post 'follow/:name' => 'relationships#create', as: :follow
   	delete 'unfollow/:name' => 'relationships#destroy', as: :unfollow

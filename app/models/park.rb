@@ -9,7 +9,7 @@ class Park < ApplicationRecord
 	validates :country_id, presence: true
 
 	geocoded_by :address
-	after_validation :geocode, :if => :address_changed?
+	after_validation :geocode
 
 	scope :search, -> (search_params) do
 		return if search_params.blank?
