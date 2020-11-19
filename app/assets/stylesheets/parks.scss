@@ -69,10 +69,18 @@ div .search-form {
     	padding: 1em 1.5em;
     }
 }
-#map {
-	height: 300px;
+#map-container {
+	clear: both;
 	width: 540px;
+	height: 300px;
+	padding: 4px;
+	border: 1px solid #ccc;
 }
+#map {
+	width: 530px;
+	height: 290px;
+}
+
 .header {
 	border-bottom: 2px dashed #95ccff;
 	margin-bottom: 1em;
