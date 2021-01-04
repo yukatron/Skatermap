@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  	root 'home#top'
-  	get 'about' => 'home#about', as: :about
+  root 'home#top'
+  get 'about' => 'home#about', as: :about
 
 	devise_for :skaters, controllers: {
 		registrations: 'skaters/registrations',
@@ -9,19 +9,20 @@ Rails.application.routes.draw do
     passwords: 'skaters/passwords'
 	}
 
-  	resources :skaters, param: :name, only: [:show, :edit, :update, :index] do
-  		get 'following' => 'relationships#index',as: :followings
-  	end
-      get 'skaters/:name/delete' => 'skaters#withdraw', as: :delete_account
-  	resources :posts, param: :title do
-  		resources :comments, only: [:create, :destroy]
-  		resource :favorites, only: [:create, :destroy]
-  	end
-  	resources :parks, param: :name, constraints: { name: /[^\/]+/ }
-    resources :countries, param: :name
+  resources :skaters, param: :name, only: [:show, :edit, :update, :index] do
+  	get 'following' => 'relationships#index',as: :followings
+  end
 
-  	post 'follow/:name' => 'relationships#create', as: :follow
-  	delete 'unfollow/:name' => 'relationships#destroy', as: :unfollow
+  get 'skaters/:name/delete' => 'skaters#withdraw', as: :delete_account
+  resources :posts, param: :title do
+  	resources :comments, only: [:create, :destroy]
+  	resource :favorites, only: [:create, :destroy]
+  end
+  resources :parks, param: :name, constraints: { name: /[^\/]+/ }
+  resources :countries, param: :name
+
+  post 'follow/:name' => 'relationships#create', as: :follow
+  delete 'unfollow/:name' => 'relationships#destroy', as: :unfollow
 
 	devise_for :admins, skip: :all
 	devise_scope :admin do
