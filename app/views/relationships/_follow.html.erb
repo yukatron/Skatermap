@@ -1,6 +1,6 @@
 <div class="dropdown">
 	<div class="follow-link" type="button" id="followingsMenu" data-toggle="dropdown" area-haspopup="true" area-expanded="false"><%= skater.followings.count %> following</div>
-	<% if skater.followings.count < 0 %>
+	<% if skater.followings.count > 0 %>
 	<div class="dropdown-menu" area-labelledby="followingsMenu">
 		<% skater.followings.each do |following| %>
 			<%= link_to skater_path(following), class:"dropdown-item" do %>
